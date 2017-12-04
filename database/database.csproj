@@ -83,7 +83,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="models\DatabaseModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -131,6 +130,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="models\" />
     <Folder Include="view-models\" />
     <Folder Include="views\" />
   </ItemGroup>
