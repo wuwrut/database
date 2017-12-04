@@ -11,19 +11,35 @@ namespace database.models
 {
     class DatabaseModel
     {
-        private string con_str = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataPath|data.mdf;Integrated Security=True";
+        private string con_str = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|data.mdf;Integrated Security=True";
 
-        public void CreateWorker(long PESEL, string name, string surname, string cert)
+        public void CreateMaterial(string name, int amount = 0)
+        {
+            using (SqlConnection con = new SqlConnection(con_str))
+            {
+                using (SqlCommand cmd = new SqlCommand("DodajMaterial", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@nazwa", SqlDbType.VarChar).Value = name;
+                    cmd.Parameters.Add("@ilosc", SqlDbType.Int).Value = amount;
+
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public void CreateWorker(Int64 PESEL, string name, string surname, string cert)
         {
             using (SqlConnection con = new SqlConnection(con_str))
             {
                 using (SqlCommand cmd = new SqlCommand("DodajPracownika", con))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("@PESEL", SqlDbType.Decimal).Value = (decimal)PESEL;
+                    cmd.Parameters.Add("@PESEL", SqlDbType.BigInt).Value = PESEL;
                     cmd.Parameters.Add("@Imie", SqlDbType.VarChar).Value = name;
                     cmd.Parameters.Add("@Nazwisko", SqlDbType.VarChar).Value = surname;
-                    cmd.Parameters.Add("@Certyfikat", SqlDbType.VarChar).Value = cert;
+                    cmd.Parameters.Add("@Zaswiadczenie", SqlDbType.VarChar).Value = cert;
 
                     con.Open();
                     cmd.ExecuteNonQuery();
@@ -63,6 +79,13 @@ namespace database.models
             }
         }
 
+        /// <summary>
+        /// Add new Supply refill
+        /// </summary>
+        /// <param name="materials">dict(material_name, material_amount)</param>
+        /// <param name="seller"></param>
+        /// <param name="price"></param>
+        /// <param name="transport"></param>
         public void AddSupplyRefill(IReadOnlyDictionary<string,int> materials, string seller, decimal price, string transport)
         {
             DataTable tmp = new DataTable();
@@ -107,6 +130,12 @@ namespace database.models
             }
         }
 
+        /// <summary>
+        /// Create new production data
+        /// </summary>
+        /// <param name="product_name"></param>
+        /// <param name="amount"></param>
+        /// <param name="materials">key: material name, value: material amount</param>
         public void CreateProduction(string product_name, int amount, IReadOnlyDictionary<string, int> materials)
         {
             DataTable tmp = new DataTable();
@@ -134,7 +163,16 @@ namespace database.models
             }
         }
 
-        public void CreateOrder(DateTime arrival_date, ICollection<Tuple<int,int>> ammo, ICollection<Tuple<int, int>> weapons, string cert, bool detalic, string adnotations = null)
+        /// <summary>
+        /// Create new order and assign it to new worker
+        /// </summary>
+        /// <param name="arrival_date">date of scheduled arrival</param>
+        /// <param name="ammo">collection of pairs: (ammo id, ammo amount)</param>
+        /// <param name="weapons">collection of pairs: (weapon id, weapon amount)</param>
+        /// <param name="cert"></param>
+        /// <param name="retail">type of order: true - retail, false - wholesail</param>
+        /// <param name="adnotations">additional adnotations about order</param>
+        public void CreateOrder(DateTime arrival_date, ICollection<Tuple<int,int>> ammo, ICollection<Tuple<int, int>> weapons, string cert, bool retail, string adnotations = null)
         {
             DataTable tmp_ammo = new DataTable();
             tmp_ammo.Columns.Add("numer_pudelka");
@@ -144,7 +182,7 @@ namespace database.models
                 tmp_ammo.Rows.Add(i.Item1, i.Item2);
 
             DataTable tmp_weap = new DataTable();
-            tmp_weap.Columns.Add("numer_pudelka");
+            tmp_weap.Columns.Add("numer_seryjny");
             tmp_weap.Columns.Add("ilosc");
 
             foreach (var i in weapons)
@@ -157,7 +195,7 @@ namespace database.models
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@data_dostawy", SqlDbType.Date).Value = arrival_date;
                     cmd.Parameters.Add("@certyfikat", SqlDbType.VarChar).Value = cert;
-                    cmd.Parameters.Add("@detaliczne", SqlDbType.Bit).Value = detalic;
+                    cmd.Parameters.Add("@detaliczne", SqlDbType.Bit).Value = retail;
 
                     if (adnotations != null)
                         cmd.Parameters.Add("@uwagi", SqlDbType.VarChar).Value = adnotations;
