@@ -1,0 +1,41 @@
+﻿<Window x:Class="database.Admin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:database"
+        mc:Ignorable="d"
+        Title="Admin"  Height="320" Width="400">
+    <Grid Margin="5,5,2,2">
+        <TabControl HorizontalAlignment="Left" Height="272" VerticalAlignment="Top" Width="375">
+            <TabItem Header="Show">
+                <Grid>
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="Change">
+                <Grid>
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="Find">
+                <Grid>
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="PL/SQL">
+                <Grid>
+                    <RichTextBox Margin="10,10,10,140">
+                        <FlowDocument>
+                            <Paragraph>
+                                <Run Text="RichTextBox"/>
+                            </Paragraph>
+                        </FlowDocument>
+                    </RichTextBox>
+                    <TextBox HorizontalAlignment="Left" Height="118" Margin="10,116,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="349"/>
+
+                </Grid>
+            </TabItem>  
+        </TabControl>
+    </Grid>
+</Window>
