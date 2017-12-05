@@ -1,12 +1,15 @@
-﻿<Window x:Class="database.MainWindow"
+﻿<Window x:Name="Login" x:Class="database.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:database"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
+        Title="MainWindow" Height="262.803" Width="254.412" Background="#FFE6E6F0">
+    <Grid Margin="0,0,0,-5">
+        <ComboBox x:Name="loginbox" HorizontalAlignment="Left" Margin="40,81,0,0" Width="165" RenderTransformOrigin="0.252,0.685" Height="22" VerticalAlignment="Top"/>
+        <Label Content="Pick a username to login." HorizontalAlignment="Left" Margin="50,26,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.447,-0.426" Height="35" Width="155" FontStyle="Italic"/>
+        <Button x:Name="loginbutton" Content="Login" HorizontalAlignment="Left" Margin="40,148,0,0" VerticalAlignment="Top" Width="165" RenderTransformOrigin="-0.485,-2.132" Click="Button_Click" Height="26"/>
+
     </Grid>
 </Window>

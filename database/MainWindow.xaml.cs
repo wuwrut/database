@@ -23,6 +23,37 @@ namespace database
         public MainWindow()
         {
             InitializeComponent();
+            Window_Loaded();
         }
+
+        private void Window_Loaded()
+        {
+            loginbox.Items.Add("User");
+            loginbox.Items.Add("Admin");
+            loginbox.Items.Add("Accountant");
+
+            loginbox.SelectedIndex = 0;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            switch (loginbox.SelectedIndex) {
+                case 1:
+                    Admin newAdminWindow = new Admin();
+                    newAdminWindow.Show();
+                    break;
+                case 2:
+                    Accountant newAccountantWindow = new Accountant();
+                    newAccountantWindow.Show();
+                    break;
+                default:
+                    User newUserWindow = new User();
+                    newUserWindow.Show();
+                    break;
+            }   
+            this.Close();
+        }
+
+        
     }
 }
