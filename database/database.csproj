@@ -76,16 +76,19 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="view-models\ViewAccountant.cs" />
+    <Compile Include="view-models\ViewAdmin.cs" />
+    <Compile Include="view-models\ViewMainWindow.cs" />
+    <Compile Include="view-models\ViewShowData.cs" />
+    <Compile Include="view-models\ViewUser.cs" />
     <Compile Include="views\Accountant.xaml.cs">
       <DependentUpon>Accountant.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-
     <Compile Include="views\Admin.xaml.cs">
       <DependentUpon>Admin.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-      
     <Compile Include="views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -148,10 +151,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="view-models\" />
-    <Folder Include="windows\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Page Include="views\Accountant.xaml">
       <SubType>Designer</SubType>
