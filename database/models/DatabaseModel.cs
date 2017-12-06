@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data.Sql;
 using System.Data;
 using System.Data.SqlClient;
+using Dapper;
 
 namespace database.models
 {
@@ -211,6 +212,22 @@ namespace database.models
                     con.Open();
                     cmd.ExecuteNonQuery();
                 }
+            }
+        }
+
+        public IEnumerable<T> Query<T>(string sql_query, object parameters = null)
+        {
+            using (SqlConnection con = new SqlConnection(con_str))
+            {
+                return con.Query<T>(sql_query, parameters);
+            }
+        }
+
+        public IEnumerable<dynamic> Query(string sql_query, object parameters = null)
+        {
+            using (SqlConnection con = new SqlConnection(con_str))
+            {
+                return con.Query(sql_query, parameters);
             }
         }
     }
