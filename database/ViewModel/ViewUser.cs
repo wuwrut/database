@@ -6,9 +6,9 @@ using System.ComponentModel;
 using System.Windows;
 using System.Windows.Threading;
 
-namespace database.view_models
+namespace database.ViewModel
 {
-    class ViewAccountant
+    class ViewUser
     {
     }
 }
