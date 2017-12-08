@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Linq;
-using System.Text;
-using System.ComponentModel;
 using System.Windows;
 using System.Windows.Threading;
 using System.Collections.ObjectModel;
-using System.Collections.Generic;
 using database.models;
 using database.Helpers;
 
@@ -49,13 +45,13 @@ namespace database.ViewModel
         {
             var user = selectedItem as UserModel;
 
-            switch (user.Name)
+            switch (user.Id)
             {
-                case "Admin":
+                case 1:
                     Admin newAdminWindow = new Admin();
                     newAdminWindow.Show();
                     break;
-                case "Accountant":
+                case 2:
                     Accountant newAccountantWindow = new Accountant();
                     newAccountantWindow.Show();
                     break;

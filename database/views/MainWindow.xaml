@@ -14,7 +14,7 @@
     </Window.Resources>
     <Grid Margin="0,0,0,0">
         <ComboBox x:Name="loginbox" ItemsSource="{Binding LoginNames}" SelectedItem="{Binding SelectedLoginName}" DisplayMemberPath="Name"
-               Margin="45,82,46,0" RenderTransformOrigin="0.252,0.685" Height="22" VerticalAlignment="Top"/>
+               Margin="45,82,46,0" RenderTransformOrigin="0.252,0.685" Height="22" VerticalAlignment="Top" />
         <Label x:Name="label1" Content="Pick a username to login." 
                Margin="50,28,41,0" VerticalAlignment="Top" RenderTransformOrigin="0.447,-0.426" Height="35" Width="155" FontStyle="Italic"/>
         <Button x:Name="loginbutton" Content="Login" Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=loginbox, Path=SelectedItem}"

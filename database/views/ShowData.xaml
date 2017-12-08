@@ -4,10 +4,10 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:database"
-        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" x:Class="database.ShowData"
+        x:Class="database.ShowData"
         mc:Ignorable="d"
-        Title="Data" Height="300" Width="300">
+        Title="Data" Height="375" Width="375">
     <Grid>
-        <DataGrid HorizontalAlignment="Left" Height="249" Margin="10,10,0,0" VerticalAlignment="Top" Width="272"/>
+        <DataGrid HorizontalAlignment="Left" Height="324" Margin="10,10,0,0" VerticalAlignment="Top" Width="347"/>
     </Grid>
 </Window>
