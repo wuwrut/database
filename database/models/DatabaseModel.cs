@@ -7,6 +7,8 @@ using System.Data.Sql;
 using System.Data;
 using System.Data.SqlClient;
 using Dapper;
+using Dapper.Contrib;
+using Dapper.Contrib.Extensions;
 
 namespace database.models
 {
