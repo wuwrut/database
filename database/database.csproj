@@ -87,6 +87,7 @@
     <Compile Include="Helpers\RelayCommand.cs" />
     <Compile Include="models\entities.cs" />
     <Compile Include="models\UserModel.cs" />
+    <Compile Include="models\views.cs" />
     <Compile Include="ViewModel\ViewAccountant.cs" />
     <Compile Include="ViewModel\ViewAdmin.cs" />
     <Compile Include="ViewModel\ViewBase.cs" />
