@@ -21,6 +21,7 @@ namespace database.models
 
     public class Material
     {
+        public Int64 ID { get; set; }
         public string Nazwa { get; set; }
         public int Ilosc { get; set; }
     }
