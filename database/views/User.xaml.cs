@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows;
+using database.ViewModel;
 
 namespace database
 {
@@ -10,7 +11,6 @@ namespace database
     /// </summary>
     public partial class User : Window
     {
-
         public User()
         {
             InitializeComponent();

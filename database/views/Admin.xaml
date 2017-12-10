@@ -25,17 +25,18 @@
             </TabItem>
             <TabItem Header="PL/SQL">
                 <Grid>
-                    <RichTextBox Margin="10,10,10,140">
+                    <RichTextBox Margin="10,30,10,110" Grid.ColumnSpan="3">
                         <FlowDocument>
                             <Paragraph>
-                                <Run Text="RichTextBox"/>
+                                <Run Text=""/>
                             </Paragraph>
                         </FlowDocument>
                     </RichTextBox>
-                    <TextBox HorizontalAlignment="Left" Height="118" Margin="10,116,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="349"/>
-
+                    <TextBox HorizontalAlignment="Left" IsEnabled="False" Height="61" Margin="10,173,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="349" Grid.ColumnSpan="3"/>
+                    <Label Content="Command Line" HorizontalAlignment="Left" Margin="10,4,0,0" VerticalAlignment="Top" Width="349" Grid.ColumnSpan="3"/>
+                    <Label Content="Console Output" HorizontalAlignment="Left" Margin="10,147,0,0" VerticalAlignment="Top" Width="349" Grid.ColumnSpan="3"/>
                 </Grid>
-            </TabItem>  
+            </TabItem>
         </TabControl>
     </Grid>
 </Window>

@@ -8,6 +8,6 @@
         mc:Ignorable="d"
         Title="Data" Height="375" Width="375">
     <Grid>
-        <DataGrid HorizontalAlignment="Left" Height="324" Margin="10,10,0,0" VerticalAlignment="Top" Width="347"/>
+        <TextBox Name="DataBox"  HorizontalAlignment="Left" Height="95" Margin="10,28,0,0" TextWrapping="Wrap" Text="{}" VerticalAlignment="Top" Width="347"/>
     </Grid>
 </Window>

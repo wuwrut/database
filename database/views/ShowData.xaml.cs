@@ -10,9 +10,13 @@ namespace database
     /// </summary>
     public partial class ShowData : Window
     {
-        public ShowData()
-        {
+        public string TextFromLastView;
+
+        public ShowData(string Text)
+        { 
             InitializeComponent();
+            this.TextFromLastView = Text;
+            DataBox.Text = TextFromLastView;
         }
     }
 }
