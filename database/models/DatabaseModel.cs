@@ -32,7 +32,7 @@ namespace database.models
             }
         }
 
-        public void CreateWorker(Int64 PESEL, string name, string surname, string cert)
+        public void CreateWorker(Int64 PESEL, string name, string surname, string cert, int ravenue)
         {
             using (SqlConnection con = new SqlConnection(con_str))
             {
@@ -43,6 +43,7 @@ namespace database.models
                     cmd.Parameters.Add("@Imie", SqlDbType.VarChar).Value = name;
                     cmd.Parameters.Add("@Nazwisko", SqlDbType.VarChar).Value = surname;
                     cmd.Parameters.Add("@Zaswiadczenie", SqlDbType.VarChar).Value = cert;
+                    cmd.Parameters.Add("@Placa", SqlDbType.Int).Value = ravenue;
 
                     con.Open();
                     cmd.ExecuteNonQuery();
@@ -50,7 +51,7 @@ namespace database.models
             }
         }
 
-        public void CreateAmmo(string name, int amount)
+        public void CreateAmmo(string name, int amount, decimal price)
         {
             using (SqlConnection con = new SqlConnection(con_str))
             {
@@ -59,6 +60,7 @@ namespace database.models
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@kaliber", SqlDbType.VarChar).Value = name;
                     cmd.Parameters.Add("@ilosc", SqlDbType.Int).Value = amount;
+                    cmd.Parameters.Add("@cena", SqlDbType.Decimal).Value = price;
 
                     con.Open();
                     cmd.ExecuteNonQuery();
@@ -66,7 +68,7 @@ namespace database.models
             }
         }
 
-        public void CreateWeapon(string name, string category)
+        public void CreateWeapon(string name, string category, decimal price)
         {
             using (SqlConnection con = new SqlConnection(con_str))
             {
@@ -75,6 +77,7 @@ namespace database.models
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@nazwa", SqlDbType.VarChar).Value = name;
                     cmd.Parameters.Add("@kategoria", SqlDbType.VarChar).Value = category;
+                    cmd.Parameters.Add("@cena", SqlDbType.Decimal).Value = price;
 
                     con.Open();
                     cmd.ExecuteNonQuery();
@@ -230,6 +233,25 @@ namespace database.models
             using (SqlConnection con = new SqlConnection(con_str))
             {
                 return con.Query(sql_query, parameters);
+            }
+        }
+
+        public void Delete(string table_name, IEnumerable<int> ids)
+        {
+            using (SqlConnection con = new SqlConnection(con_str))
+            {
+                using (SqlCommand cmd = new SqlCommand($"DELETE {table_name} WHERE ID = @id", con))
+                {
+                    cmd.Parameters.Add("@id", SqlDbType.Int).Value = -1;
+
+                    con.Open();
+
+                    foreach (var id in ids)
+                    {
+                        cmd.Parameters["@id"].Value = id;
+                        cmd.ExecuteNonQuery();
+                    }
+                }
             }
         }
     }
