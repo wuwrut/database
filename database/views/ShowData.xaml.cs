@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Collections.ObjectModel;
 
 namespace database
 {
@@ -12,11 +13,10 @@ namespace database
     {
         public string TextFromLastView;
 
-        public ShowData(string Text)
+        public ShowData(object Data, bool UpdatePermission)
         { 
             InitializeComponent();
-            this.TextFromLastView = Text;
-            DataBox.Text = TextFromLastView;
+            
         }
     }
 }

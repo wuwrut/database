@@ -8,11 +8,6 @@
         Title="Admin"  Height="320" Width="400">
     <Grid Margin="5,5,2,2">
         <TabControl HorizontalAlignment="Left" Height="272" VerticalAlignment="Top" Width="375">
-            <TabItem Header="Show">
-                <Grid>
-
-                </Grid>
-            </TabItem>
             <TabItem Header="Change">
                 <Grid>
 
@@ -20,7 +15,13 @@
             </TabItem>
             <TabItem Header="Find">
                 <Grid>
-
+                    <ComboBox Name="Pick_Category" Margin="196,24,21,192"/>
+                    <Label Content="Table" HorizontalAlignment="Left" Margin="26,24,0,0" VerticalAlignment="Top" Width="137" Height="28"/>
+                    <Button Content="Find" Command="{Binding ShowDataCommand}" Margin="196,190,21,25"/>
+                    <TextBox HorizontalAlignment="Left" VerticalContentAlignment="Center" FontSize="14" Height="29" Margin="196,127,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="152" RenderTransformOrigin="1.178,-1"/>
+                    <Label Content="Search phrase" HorizontalAlignment="Left" Margin="26,127,0,0" VerticalAlignment="Top" Width="137" Height="28"/>
+                    <ComboBox x:Name="Pick_Category_Copy" Margin="196,75,21,141"/>
+                    <Label Content="Attribute" HorizontalAlignment="Left" Margin="26,75,0,0" VerticalAlignment="Top" Width="137" Height="28"/>
                 </Grid>
             </TabItem>
             <TabItem Header="PL/SQL">

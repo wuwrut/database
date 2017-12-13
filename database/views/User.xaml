@@ -13,17 +13,32 @@
         <TabControl HorizontalAlignment="Left" Height="272" VerticalAlignment="Top" Width="375">
             <TabItem Header="Find">
                 <Grid>
-                    <ComboBox Name="Pick_Category" Margin="196,51,21,165"/>
-                    <Label Content="Table" HorizontalAlignment="Left" Margin="25,51,0,0" VerticalAlignment="Top" Width="137" Height="28"/>
-                    <Button Content="Button" Command="{Binding ShowDataCommand}" Margin="131,180,131,35"/>
-                    <TextBox HorizontalAlignment="Left" Height="23" Margin="131,135,0,0" TextWrapping="Wrap" Text="{Binding TextBox1, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="107"/>
+                    <ComboBox Name="PickTable" ItemsSource="{Binding Tables}" SelectedItem="{Binding TableName}" Margin="196,24,21,192"/>
+                    <Label Content="Table" HorizontalAlignment="Left" Margin="26,24,0,0" VerticalAlignment="Top" Width="137" Height="28"/>
+                    <Button Content="Find" Command="{Binding ShowDataCommand}" Margin="196,190,21,25"/>
+                    <TextBox HorizontalAlignment="Left" Text="{Binding TextBox1, UpdateSourceTrigger=PropertyChanged}"
+                             VerticalContentAlignment="Center" FontSize="14" Height="29" Margin="196,127,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="152" RenderTransformOrigin="1.178,-1"/>
+                    <Label Content="Search phrase" HorizontalAlignment="Left" Margin="26,127,0,0" VerticalAlignment="Top" Width="137" Height="28"/>
+                    <ComboBox x:Name="PickAttribute" Margin="196,75,21,141"/>
+                    <Label Content="Attribute" HorizontalAlignment="Left" Margin="26,75,0,0" VerticalAlignment="Top" Width="137" Height="28"/>
                 </Grid>
             </TabItem>
             <TabItem Header="File New">
                 <Grid>
+                    <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="129" Margin="10,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="349"
+                               />
+                    <ComboBox HorizontalAlignment="Left" Margin="31,97,0,0" VerticalAlignment="Top" Width="120"/>
+                    <ComboBox HorizontalAlignment="Left" Margin="203,43,0,0" VerticalAlignment="Top" Width="120"/>
+                    <ComboBox HorizontalAlignment="Left" Margin="31,43,0,0" VerticalAlignment="Top" Width="120"/>
+                    <Button Content="Order" HorizontalAlignment="Left" Margin="203,97,0,0" VerticalAlignment="Top" Width="120"/>
+
+                    <Rectangle Fill="#FFF4F4F5" Stroke="Black" Margin="10,144,10,10"/>
+
 
                 </Grid>
             </TabItem>
+
+
 
         </TabControl>
     </Grid>

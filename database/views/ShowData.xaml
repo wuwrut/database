@@ -6,8 +6,8 @@
         xmlns:local="clr-namespace:database"
         x:Class="database.ShowData"
         mc:Ignorable="d"
-        Title="Data" Height="375" Width="375">
+        Title="Data" Height="443" Width="445">
     <Grid>
-        <TextBox Name="DataBox"  HorizontalAlignment="Left" Height="95" Margin="10,28,0,0" TextWrapping="Wrap" Text="{}" VerticalAlignment="Top" Width="347"/>
+        <DataGrid Name="DataGrid" Margin="10"/>
     </Grid>
 </Window>
