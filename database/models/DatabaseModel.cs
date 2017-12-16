@@ -236,6 +236,14 @@ namespace database.models
             }
         }
 
+        public void Execute(string query, object parameters = null)
+        {
+            using (SqlConnection con = new SqlConnection(con_str))
+            {
+                con.Execute(query, parameters);
+            }
+        }
+
         public void Delete(string table_name, IEnumerable<int> ids)
         {
             using (SqlConnection con = new SqlConnection(con_str))
