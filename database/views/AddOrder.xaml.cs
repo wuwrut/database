@@ -68,6 +68,9 @@ namespace database
             }
         }
 
-        
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            WPNumber.IsEnabled = RadioButton.IsEnabled;
+        }
     }
 }

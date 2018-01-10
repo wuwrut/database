@@ -18,14 +18,14 @@
         <Label Content="Currently added" HorizontalAlignment="Left" Margin="21,15,0,0" VerticalAlignment="Top"/>
         <TextBox Name="BoxAdded" Margin="21,41,220,283" TextWrapping="Wrap"/>
 
-        <RadioButton Name="RadioButton" Content="Retail" HorizontalAlignment="Left" Margin="21,217,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.518,10.267"/>
+        <CheckBox Name="RadioButton" Content="Retail" HorizontalAlignment="Left" Margin="32,220,0,0" VerticalAlignment="Top" Height="29" Checked="RadioButton_Checked"/>
         <Label Content="Weapon Permission Number" HorizontalAlignment="Left" Margin="149,194,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="WPNumber" HorizontalAlignment="Left" Height="29" Margin="149,220,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="234"/>
+        <TextBox Name="WPNumber" Margin="149,220,24,208" TextWrapping="Wrap"/>
 
         <Label Content="Arrival Date" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="31,265,0,0"/>
         <DatePicker Name="DatePicker"  HorizontalAlignment="Left" Margin="149,265,0,0" VerticalAlignment="Top" Height="29" Width="234"/>
 
-        <TextBox Name="BoxComments" HorizontalAlignment="Left" Margin="10,336,0,60" TextWrapping="Wrap" Width="387"/>
+        <TextBox Name="BoxComments" Margin="10,336,10,60" TextWrapping="Wrap"/>
         <Label Content="Comments" HorizontalAlignment="Left" Margin="10,305,0,0" VerticalAlignment="Top"/>
 
         <Button Name="AddNewOrder" Content="File Order" Margin="263,411,10,15" Click="AddNewOrder_Click"/>
