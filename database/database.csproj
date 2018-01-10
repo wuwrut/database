@@ -92,7 +92,6 @@
     <Compile Include="ViewModel\ViewAdmin.cs" />
     <Compile Include="ViewModel\ViewBase.cs" />
     <Compile Include="ViewModel\ViewMainWindow.cs" />
-    <Compile Include="ViewModel\ViewShowData.cs" />
     <Compile Include="ViewModel\ViewUser.cs" />
     <Compile Include="views\Accountant.xaml.cs">
       <DependentUpon>Accountant.xaml</DependentUpon>

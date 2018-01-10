@@ -5,41 +5,30 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         xmlns:vm="clr-namespace:database.ViewModel" 
-        Title="User" Height="320" Width="400">
+        Title="User" Height="400" Width="400">
     <Window.DataContext>
         <vm:ViewUser/>
     </Window.DataContext>
     <Grid Margin="5,5,2,2">
-        <TabControl HorizontalAlignment="Left" Height="272" VerticalAlignment="Top" Width="375">
-            <TabItem Header="Find">
-                <Grid>
-                    <ComboBox Name="PickTable" ItemsSource="{Binding Tables}" SelectedItem="{Binding TableName}" Margin="196,24,21,192"/>
-                    <Label Content="Table" HorizontalAlignment="Left" Margin="26,24,0,0" VerticalAlignment="Top" Width="137" Height="28"/>
-                    <Button Content="Find" Command="{Binding ShowDataCommand}" Margin="196,190,21,25"/>
-                    <TextBox HorizontalAlignment="Left" Text="{Binding TextBox1, UpdateSourceTrigger=PropertyChanged}"
-                             VerticalContentAlignment="Center" FontSize="14" Height="29" Margin="196,127,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="152" RenderTransformOrigin="1.178,-1"/>
-                    <Label Content="Search phrase" HorizontalAlignment="Left" Margin="26,127,0,0" VerticalAlignment="Top" Width="137" Height="28"/>
-                    <ComboBox x:Name="PickAttribute" Margin="196,75,21,141"/>
-                    <Label Content="Attribute" HorizontalAlignment="Left" Margin="26,75,0,0" VerticalAlignment="Top" Width="137" Height="28"/>
-                </Grid>
-            </TabItem>
+        <TabControl Margin="0,0,10,10">
             <TabItem Header="File New">
                 <Grid>
-                    <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="129" Margin="10,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="349"
-                               />
-                    <ComboBox HorizontalAlignment="Left" Margin="31,97,0,0" VerticalAlignment="Top" Width="120"/>
-                    <ComboBox HorizontalAlignment="Left" Margin="203,43,0,0" VerticalAlignment="Top" Width="120"/>
-                    <ComboBox HorizontalAlignment="Left" Margin="31,43,0,0" VerticalAlignment="Top" Width="120"/>
-                    <Button Content="Order" HorizontalAlignment="Left" Margin="203,97,0,0" VerticalAlignment="Top" Width="120"/>
-
-                    <Rectangle Fill="#FFF4F4F5" Stroke="Black" Margin="10,144,10,10"/>
-
-
+                    <Button Content="Add Order" Command="{Binding AddNewOrder}"  Margin="124,69,123,212"/>
+                    <Button Content="List Your Orders" Command="{Binding ListOrders}"  Margin="124,182,123,100"/>
                 </Grid>
             </TabItem>
-
-
-
+            <TabItem Header="Find">
+                <Grid>
+                    <ComboBox Name="PickTable" ItemsSource="{Binding TableNamesFromDatabase}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedTableName}" Margin="196,26,21,258"/>
+                    <Label Content="Table" HorizontalAlignment="Left" Margin="26,26,0,0" VerticalAlignment="Top" Width="137" Height="28"/>
+                    <ComboBox x:Name="PickAttribute" ItemsSource="{Binding SelectedTableName.TableAttributes}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedAttribute}" Margin="196,82,21,202" ToolTip="{Binding (Validation.Errors)[0].ErrorContent, RelativeSource={RelativeSource Self}}"/>
+                    <Label Content="Attribute" HorizontalAlignment="Left" Margin="26,82,0,0" VerticalAlignment="Top" Width="137" Height="28"/>
+                    <TextBox Text="{Binding TextBox1, UpdateSourceTrigger=PropertyChanged}"
+                             VerticalContentAlignment="Center" FontSize="14" Height="40" Margin="196,141,21,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="1.178,-1"/>
+                    <Label Content="Search phrase" HorizontalAlignment="Left" Margin="26,141,0,0" VerticalAlignment="Top" Width="137" Height="28"/>
+                    <Button Content="Find" Command="{Binding ShowDataCommand}" Margin="196,225,21,59"/>
+                </Grid>
+            </TabItem>
         </TabControl>
     </Grid>
 </Window>

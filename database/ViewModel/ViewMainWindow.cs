@@ -61,7 +61,7 @@ namespace database.ViewModel
                     break;
             }
             //Works, for testing it's disabled.
-            //CloseWindow();
+            CloseWindow();
         }
     }
 }

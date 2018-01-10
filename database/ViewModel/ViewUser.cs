@@ -11,68 +11,76 @@ using System.Collections.Generic;
 namespace database.ViewModel
 {
 
-    public class TableNames
-    {
-        public string Name { get; set; }
-        public ICollection<Attributes> TableAttributes { get; set; }
-    }
-
-    public class Attributes
-    {
-        public string Name { get; set; }
-    }
-
     class ViewUser : ViewMainWindow
     {
+        public class TableNames
+        {
+            public String Name { get; set; }
+            public ICollection<TableAttribute> TableAttributes { get; set; }
+        };
+
+        public class TableAttribute
+        {
+            public string Name { get; set; }
+        };
+
+
         public RelayCommand ShowDataCommand { get; set; }
-        public ObservableCollection<dynamic> Tables { get; set; }
-        public ObservableCollection<dynamic> DataSet { get; set; }
+        public RelayCommand AddNewOrder { get; set; }
+        public RelayCommand ListOrders { get; set; }
+
+        public IList<TableNames> TableNamesFromDatabase { get; private set; }
+        public ICollection<TableAttribute> TableAttributesFromDatabase { get; private set; }
+        public TableAttribute SelectedAttribute { get; set; }
 
         public ViewUser()
         {
             this.TableNamesFromDatabase = new List<TableNames>()
             {
-                new TableNames(){Name="BRON", TableAttributes = new List<Attributes>
+                new TableNames(){Name="BRON",
+                    TableAttributes = new List<TableAttribute>()
                     {
-                        
+                        new TableAttribute(){Name = ""},
+                        new TableAttribute(){Name = "Nazwa"}
+                    }
+                },
+
+                new TableNames(){Name="AMUNICJA",
+                    TableAttributes = new List<TableAttribute>()
+                    {
+                        new TableAttribute(){Name = ""},
+                        new TableAttribute(){Name = "Kaliber"},
+                        new TableAttribute(){Name = "Ilosc amunicji"}
                     }
                 }
             };
+            this.SelectedTableName = this.TableNamesFromDatabase[0];    
+
             ShowDataCommand = new RelayCommand(DataCommand);
+
+            ListOrders = new RelayCommand(ListUserOrders);
+            AddNewOrder = new RelayCommand(AddNewUserOrder);
         }
 
-        public IList<TableNames> TableNamesFromDatabase
-        {
-            get;
-            private set;
-        }
 
-        public ICollection<Attributes> AttributesFromTable
-        {
-            get;
-            private set;
-        }
-
-        private TableNames _SelectedTableName;
+        private TableNames _selectedTableName;
         public TableNames SelectedTableName
         {
             get
             {
-                return _SelectedTableName;
+                return _selectedTableName;
             }
             set
             {
-                if (_SelectedTableName != value)
+                if (_selectedTableName != value)
                 {
-                    _SelectedTableName = value;
+                    _selectedTableName = value;
                     RaisePropertyChanged("SelectedTableName");
-                    this.AttributesFromTable = _SelectedTableName.TableAttributes;
-                    RaisePropertyChanged("AttributesFromTable");
+                    this.TableAttributesFromDatabase = _selectedTableName.TableAttributes;                           
+                    RaisePropertyChanged("TableAttributesFromDatabase");
                 }
             }
         }
-
-        private Attributes SelectedAttribute { get; set; }
 
         string _TextBox1;
         public string TextBox1
@@ -98,6 +106,20 @@ namespace database.ViewModel
             
             //ShowData DataWindow = new ShowData();
             //DataWindow.Show();
+        }
+
+        void ListUserOrders(object paramater)
+        {
+            DatabaseModel DataModel = new DatabaseModel();
+            IEnumerable Table = DataModel.Query("SELECT * FROM BRON");
+
+            //ShowData DataWindow = new ShowData();
+            //DataWindow.Show();
+        }
+
+        void AddNewUserOrder(object paramter)
+        {
+
         }
     }
 }
