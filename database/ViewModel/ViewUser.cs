@@ -119,7 +119,8 @@ namespace database.ViewModel
 
         void AddNewUserOrder(object paramter)
         {
-
+            AddOrder newOrder = new AddOrder();
+            newOrder.Show();
         }
     }
 }
