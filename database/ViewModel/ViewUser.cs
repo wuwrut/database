@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using database.models;
 using database.Helpers;
 using System.Collections;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace database.ViewModel
@@ -102,18 +103,20 @@ namespace database.ViewModel
         void DataCommand(object parameter)
         {
             DatabaseModel DataModel = new DatabaseModel();
-            IEnumerable Table = DataModel.Query("SELECT * FROM BRON");
-            
-            //ShowData DataWindow = new ShowData();
+            IEnumerable<dynamic> Table = DataModel.Query("SELECT * FROM BRON");
+
+            //NOT WORKING!
+            //ShowData DataWindow = new ShowData(Table, false);
             //DataWindow.Show();
         }
 
         void ListUserOrders(object paramater)
         {
             DatabaseModel DataModel = new DatabaseModel();
-            IEnumerable Table = DataModel.Query("SELECT * FROM BRON");
+            IEnumerable<dynamic> Table = DataModel.Query("SELECT * FROM ZAMOWIENIE");
 
-            //ShowData DataWindow = new ShowData();
+            //NOT WORKING!
+            //ShowData DataWindow = new ShowData(Table, false);
             //DataWindow.Show();
         }
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Linq;
 using System.Collections.ObjectModel;
 
 namespace database
@@ -13,8 +14,9 @@ namespace database
     {
         public string TextFromLastView;
 
-        public ShowData(object Data, bool UpdatePermission)
-        { 
+        public ShowData(IEnumerable<dynamic> Data, bool UpdatePermission)
+        {
+            this.DataGrid.ItemsSource = Data.ToList();
             InitializeComponent();
             
         }
