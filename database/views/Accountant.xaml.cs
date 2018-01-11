@@ -12,21 +12,9 @@ namespace database
     /// </summary>
     public partial class Accountant : Window
     {
-        public Accountant(int command)
+        public Accountant()
         {
             InitializeComponent();
-            switch (command)
-            {
-                case (0):
-
-                    break;
-                case (1):
-
-                    break;
-                default:
-
-                    break;
-            }
         }
     }
 }

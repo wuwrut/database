@@ -19,8 +19,20 @@ namespace database
     /// </summary>
     public partial class AccountantForm : Window
     {
-        public AccountantForm()
-        {
+        public AccountantForm(int command)
+        {            
+            switch (command)
+            {
+                case (0):
+
+                    break;
+                case (1):
+
+                    break;
+                default:
+
+                    break;
+            }
             InitializeComponent();
         }
     }
