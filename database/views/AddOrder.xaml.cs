@@ -27,6 +27,10 @@ namespace database
         public AddOrder()
         {
             InitializeComponent();
+
+            List<String> cType = new List<String> { "Bron", "Amunicja" };
+            ComboType.ItemsSource = cType;
+            ComboType.SelectedItem = cType[0];
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
@@ -66,11 +70,6 @@ namespace database
             {
                 //DataModel.CreateOrder(DatePicker.SelectedDate.Value, ammo, weapons, "", false);
             }
-        }
-
-        private void RadioButton_Checked(object sender, RoutedEventArgs e)
-        {
-            WPNumber.IsEnabled = RadioButton.IsEnabled;
         }
     }
 }

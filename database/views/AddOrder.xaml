@@ -18,7 +18,7 @@
         <Label Content="Currently added" HorizontalAlignment="Left" Margin="21,15,0,0" VerticalAlignment="Top"/>
         <TextBox Name="BoxAdded" Margin="21,41,220,283" TextWrapping="Wrap"/>
 
-        <CheckBox Name="RadioButton" Content="Retail" HorizontalAlignment="Left" Margin="32,220,0,0" VerticalAlignment="Top" Height="29" Checked="RadioButton_Checked"/>
+        <CheckBox Name="RadioButton" Content="Retail" HorizontalAlignment="Left" Margin="32,220,0,0" VerticalAlignment="Top" Height="29"/>
         <Label Content="Weapon Permission Number" HorizontalAlignment="Left" Margin="149,194,0,0" VerticalAlignment="Top"/>
         <TextBox Name="WPNumber" Margin="149,220,24,208" TextWrapping="Wrap"/>
 

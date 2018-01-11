@@ -5,28 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         xmlns:vm="clr-namespace:database.ViewModel" 
-        Title="User" Height="400" Width="400">
+        Title="User" Height="334" Width="424">
     <Window.DataContext>
         <vm:ViewUser/>
     </Window.DataContext>
     <Grid Margin="5,5,2,2">
-        <TabControl Margin="0,0,10,10">
+        <TabControl Margin="0,0,10,0" Height="296" VerticalAlignment="Top">
             <TabItem Header="File New">
                 <Grid>
-                    <Button Content="Add Order" Command="{Binding AddNewOrder}"  Margin="124,69,123,212"/>
-                    <Button Content="List Your Orders" Command="{Binding ListOrders}"  Margin="124,182,123,100"/>
+                    <Button Content="Add Order" Command="{Binding AddNewOrder}"  Margin="124,58,123,0" Height="40" VerticalAlignment="Top"/>
+                    <Button Content="List Your Orders" Command="{Binding ListOrders}"  Margin="124,154,123,0" Height="39" VerticalAlignment="Top"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Find">
                 <Grid>
-                    <ComboBox Name="PickTable" ItemsSource="{Binding TableNamesFromDatabase}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedTableName}" Margin="196,26,21,258"/>
+                    <ComboBox Name="PickTable" ItemsSource="{Binding TableNamesFromDatabase}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedTableName}" Margin="196,26,21,0" Height="28" VerticalAlignment="Top"/>
                     <Label Content="Table" HorizontalAlignment="Left" Margin="26,26,0,0" VerticalAlignment="Top" Width="137" Height="28"/>
-                    <ComboBox x:Name="PickAttribute" ItemsSource="{Binding SelectedTableName.TableAttributes}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedAttribute}" Margin="196,82,21,202" ToolTip="{Binding (Validation.Errors)[0].ErrorContent, RelativeSource={RelativeSource Self}}"/>
+                    <ComboBox x:Name="PickAttribute" ItemsSource="{Binding SelectedTableName.TableAttributes}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedAttribute}" Margin="196,82,21,0" ToolTip="{Binding (Validation.Errors)[0].ErrorContent, RelativeSource={RelativeSource Self}}" Height="28" VerticalAlignment="Top"/>
                     <Label Content="Attribute" HorizontalAlignment="Left" Margin="26,82,0,0" VerticalAlignment="Top" Width="137" Height="28"/>
                     <TextBox Text="{Binding TextBox1, UpdateSourceTrigger=PropertyChanged}"
-                             VerticalContentAlignment="Center" FontSize="14" Height="40" Margin="196,141,21,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="1.178,-1"/>
+                             VerticalContentAlignment="Center" FontSize="14" Height="28" Margin="196,141,21,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="1.178,-1"/>
                     <Label Content="Search phrase" HorizontalAlignment="Left" Margin="26,141,0,0" VerticalAlignment="Top" Width="137" Height="28"/>
-                    <Button Content="Find" Command="{Binding ShowDataCommand}" Margin="196,225,21,59"/>
+                    <Button Content="Find" Command="{Binding ShowDataCommand}" Margin="196,205,21,0" Height="37" VerticalAlignment="Top"/>
                 </Grid>
             </TabItem>
         </TabControl>

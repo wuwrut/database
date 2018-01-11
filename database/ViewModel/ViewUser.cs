@@ -42,7 +42,8 @@ namespace database.ViewModel
                     TableAttributes = new List<TableAttribute>()
                     {
                         new TableAttribute(){Name = ""},
-                        new TableAttribute(){Name = "Nazwa"}
+                        new TableAttribute(){Name = "Nazwa"},
+                        new TableAttribute(){Name = "Cena"}
                     }
                 },
 
@@ -51,7 +52,8 @@ namespace database.ViewModel
                     {
                         new TableAttribute(){Name = ""},
                         new TableAttribute(){Name = "Kaliber"},
-                        new TableAttribute(){Name = "Ilosc amunicji"}
+                        new TableAttribute(){Name = "Ilosc_amunicji"},
+                        new TableAttribute(){Name = "Cena"}
                     }
                 }
             };
@@ -102,8 +104,13 @@ namespace database.ViewModel
 
         void DataCommand(object parameter)
         {
+            String que = "SELECT * FROM " + SelectedTableName.Name;
+            if(SelectedAttribute.Name != "" && TextBox1 != "")
+            {
+                que += " WHERE CONTAINS(" + SelectedAttribute.Name + ", " + TextBox1 + ")";
+            }
             DatabaseModel DataModel = new DatabaseModel();
-            IEnumerable<dynamic> Table = DataModel.Query("SELECT * FROM BRON");
+            IEnumerable<dynamic> Table = DataModel.Query(sql_query: que);
 
             //NOT WORKING!
             //ShowData DataWindow = new ShowData(Table, false);
