@@ -220,6 +220,61 @@ namespace database.models
             }
         }
 
+        public decimal OrderValue(long id)
+        {
+            decimal ret;
+
+            using (SqlConnection con = new SqlConnection(con_str))
+            {
+                using (SqlCommand cmd = new SqlCommand("OrderValue", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@id", SqlDbType.BigInt).Value = id;
+
+                    con.Open();
+                    ret = (decimal)cmd.ExecuteScalar();
+                }
+            }
+
+            return ret;
+        }
+
+        public long TotalAmmoCount()
+        {
+            long ret;
+
+            using (SqlConnection con = new SqlConnection(con_str))
+            {
+                using (SqlCommand cmd = new SqlCommand("TotalAmmoCount", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    con.Open();
+                    ret = (long)cmd.ExecuteScalar();
+                }
+            }
+
+            return ret;
+        }
+
+        public decimal TotalOutcome()
+        {
+            decimal ret;
+
+            using (SqlConnection con = new SqlConnection(con_str))
+            {
+                using (SqlCommand cmd = new SqlCommand("TotalOutcome", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    con.Open();
+                    ret = (decimal)cmd.ExecuteScalar();
+                }
+            }
+
+            return ret;
+        }
+
         public IEnumerable<T> Query<T>(string sql_query, object parameters = null)
         {
             using (SqlConnection con = new SqlConnection(con_str))
