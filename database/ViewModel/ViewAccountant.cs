@@ -26,17 +26,20 @@ namespace database.ViewModel
 
         void AddWorker(object paramater)
         {
-            AccountantForm AForm = new AccountantForm(1)
+            AccountantForm AForm = new AccountantForm(0);
+            AForm.Show();
         }
 
         void AddProduction(object paramater)
         {
-
+            AccountantForm AForm = new AccountantForm(1);
+            AForm.Show();
         }
 
         void AddMaterial(object paramater)
         {
-
+            AccountantForm AForm = new AccountantForm(2);
+            AForm.Show();
         }
     }
 }

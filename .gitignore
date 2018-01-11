@@ -262,3 +262,5 @@ __pycache__/
 
 #Proj files
 /database/packages.config
+*.mdf
+*.ldf
