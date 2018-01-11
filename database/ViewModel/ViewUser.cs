@@ -105,6 +105,7 @@ namespace database.ViewModel
         void DataCommand(object parameter)
         {
             String que = "SELECT * FROM " + SelectedTableName.Name;
+
             if(SelectedAttribute.Name != "" && TextBox1 != "")
             {
                 que += " WHERE CONTAINS(" + SelectedAttribute.Name + ", " + TextBox1 + ")";
@@ -113,8 +114,8 @@ namespace database.ViewModel
             IEnumerable<dynamic> Table = DataModel.Query(sql_query: que);
 
             //NOT WORKING!
-            //ShowData DataWindow = new ShowData(Table, false);
-            //DataWindow.Show();
+            ShowData DataWindow = new ShowData(Table, false);
+            DataWindow.Show();
         }
 
         void ListUserOrders(object paramater)

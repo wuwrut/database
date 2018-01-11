@@ -16,9 +16,8 @@ namespace database
 
         public ShowData(IEnumerable<dynamic> Data, bool UpdatePermission)
         {
-            //this.DataGrid.ItemsSource = Data.ToList()
             InitializeComponent();
-            
+            //this.DataGrid.ItemsSource = Data.ToList()
         }
     }
 }
