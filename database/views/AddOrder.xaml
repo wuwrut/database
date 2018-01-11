@@ -5,30 +5,42 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:database"
         mc:Ignorable="d"
-        Title="AddOrder" Height="488" Width="415">
+        Title="AddOrder" Height="513" Width="416">
     <Grid>
-        <Rectangle Fill="#FFF4F4F5" Margin="10,10,10,268" Stroke="Black"/>
-        <Label Content="Type" HorizontalAlignment="Left" Margin="205,27,0,0" VerticalAlignment="Top"/>
-        <ComboBox Name="ComboType" HorizontalAlignment="Left" Margin="263,27,0,0" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Subtype" HorizontalAlignment="Left" Margin="205,66,0,0" VerticalAlignment="Top"/>
-        <ComboBox Name="ComboSubtype" HorizontalAlignment="Left" Margin="263,66,0,0" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Quantity" HorizontalAlignment="Left" Margin="205,105,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.158,0.846"/>
-        <TextBox Name="BoxQuantity" HorizontalAlignment="Left" Height="26" Margin="263,105,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.167,0.304"/>
-        <Button Name="AddButton" Content="Add to Order" HorizontalAlignment="Left" Margin="263,145,0,0" VerticalAlignment="Top" Width="120" Height="29" Click="AddButton_Click"/>
-        <Label Content="Currently added" HorizontalAlignment="Left" Margin="21,15,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="BoxAdded" Margin="21,41,220,283" TextWrapping="Wrap"/>
+        <GroupBox Header="Guns &amp; Ammunition" Margin="10,10,10,263">
+            <Separator Margin="166,-141,16,-44" RenderTransformOrigin="0.5,0.5">
+                <Separator.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="90"/>
+                        <TranslateTransform Y="46.592" X="-81.612"/>
+                    </TransformGroup>
+                </Separator.RenderTransform>
+            </Separator>
+        </GroupBox>
+        <Label Content="Type" HorizontalAlignment="Left" Margin="202,37,0,0" VerticalAlignment="Top"/>
+        <ComboBox Name="ComboType" HorizontalAlignment="Left" Margin="263,37,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Subtype" HorizontalAlignment="Left" Margin="202,85,0,0" VerticalAlignment="Top"/>
+        <ComboBox Name="ComboSubtype" HorizontalAlignment="Left" Margin="263,85,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Quantity" HorizontalAlignment="Left" Margin="202,126,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.158,0.846"/>
+        <TextBox Name="BoxQuantity" HorizontalAlignment="Left" Height="26" Margin="263,126,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.167,0.304"/>
+        <Button Name="AddButton" Content="Add to Order" HorizontalAlignment="Left" Margin="263,170,0,0" VerticalAlignment="Top" Width="120" Height="29" Click="AddButton_Click"/>
+        <Label Content="Currently added" HorizontalAlignment="Left" Margin="21,37,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="BoxAdded" Text="Your current order is empty!" Margin="21,63,221,283" TextWrapping="Wrap"/>
 
-        <CheckBox Name="RadioButton" Content="Retail" HorizontalAlignment="Left" Margin="32,220,0,0" VerticalAlignment="Top" Height="29"/>
-        <Label Content="Weapon Permission Number" HorizontalAlignment="Left" Margin="149,194,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="WPNumber" Margin="149,220,24,208" TextWrapping="Wrap"/>
+        <CheckBox Name="RadioButton" Content="Retail" HorizontalAlignment="Left" Margin="71,246,0,0" VerticalAlignment="Top" Height="28" Width="72" RenderTransformOrigin="0.569,1.571"/>
+        <Label Content="Weapon Permission Number" HorizontalAlignment="Left" Margin="168,219,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="WPNumber" Margin="168,246,24,208" TextWrapping="Wrap"/>
 
-        <Label Content="Arrival Date" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="31,265,0,0"/>
-        <DatePicker Name="DatePicker"  HorizontalAlignment="Left" Margin="149,265,0,0" VerticalAlignment="Top" Height="29" Width="234"/>
+        <Label Content="Arrival Date" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="44,293,0,0" RenderTransformOrigin="1.167,-1.077"/>
+        <DatePicker Name="DatePicker" Margin="168,293,25,0" VerticalAlignment="Top" Height="29"/>
 
-        <TextBox Name="BoxComments" Margin="10,336,10,60" TextWrapping="Wrap"/>
-        <Label Content="Comments" HorizontalAlignment="Left" Margin="10,305,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="BoxComments" Margin="10,366,10,60" TextWrapping="Wrap"/>
+        <Label Content="Comments" HorizontalAlignment="Left" Margin="10,335,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.478,1.077"/>
 
-        <Button Name="AddNewOrder" Content="File Order" Margin="263,411,10,15" Click="AddNewOrder_Click"/>
-        
+        <Button Name="AddNewOrder" Content="File Order" Margin="263,437,10,15" Click="AddNewOrder_Click"/>
+
+
     </Grid>
 </Window>

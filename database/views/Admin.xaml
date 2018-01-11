@@ -3,9 +3,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:database"
+        xmlns:vm="clr-namespace:database.ViewModel"
         mc:Ignorable="d"
         Title="Admin"  Height="320" Width="400">
+    <Window.DataContext>
+        <vm:ViewAdmin/>
+    </Window.DataContext>
     <Grid Margin="5,5,2,2">
         <TabControl HorizontalAlignment="Left" Height="272" VerticalAlignment="Top" Width="375">
             <TabItem Header="Change">
@@ -16,28 +19,24 @@
             <TabItem Header="Find">
                 <Grid>
                     <ComboBox Name="Pick_Category" Margin="196,24,21,192"/>
-                    <Label Content="Table" HorizontalAlignment="Left" Margin="26,24,0,0" VerticalAlignment="Top" Width="137" Height="28"/>
+                    <Label Content="Table" Margin="26,24,206,192"/>
                     <Button Content="Find" Command="{Binding ShowDataCommand}" Margin="196,190,21,25"/>
-                    <TextBox HorizontalAlignment="Left" VerticalContentAlignment="Center" FontSize="14" Height="29" Margin="196,127,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="152" RenderTransformOrigin="1.178,-1"/>
-                    <Label Content="Search phrase" HorizontalAlignment="Left" Margin="26,127,0,0" VerticalAlignment="Top" Width="137" Height="28"/>
+                    <TextBox VerticalContentAlignment="Center" FontSize="14" Margin="196,127,21,88" TextWrapping="Wrap" RenderTransformOrigin="1.178,-1"/>
+                    <Label Content="Search phrase" Margin="26,127,206,89"/>
                     <ComboBox x:Name="Pick_Category_Copy" Margin="196,75,21,141"/>
-                    <Label Content="Attribute" HorizontalAlignment="Left" Margin="26,75,0,0" VerticalAlignment="Top" Width="137" Height="28"/>
+                    <Label Content="Attribute" Margin="26,75,206,141"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="PL/SQL">
+            <TabItem Header="Query">
                 <Grid>
-                    <RichTextBox Margin="10,30,10,110" Grid.ColumnSpan="3">
-                        <FlowDocument>
-                            <Paragraph>
-                                <Run Text=""/>
-                            </Paragraph>
-                        </FlowDocument>
-                    </RichTextBox>
-                    <TextBox HorizontalAlignment="Left" IsEnabled="False" Height="61" Margin="10,173,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="349" Grid.ColumnSpan="3"/>
-                    <Label Content="Command Line" HorizontalAlignment="Left" Margin="10,4,0,0" VerticalAlignment="Top" Width="349" Grid.ColumnSpan="3"/>
-                    <Label Content="Console Output" HorizontalAlignment="Left" Margin="10,147,0,0" VerticalAlignment="Top" Width="349" Grid.ColumnSpan="3"/>
+                    <TextBox IsReadOnly="True" Text="{Binding TextOutput}" Margin="10,178,10,10" TextWrapping="Wrap"/>
+                    <Label Content="Command Line" Margin="10,4,10,214"/>
+                    <Label Content="Error Output" Margin="10,147,10,71"/>
+                    <TextBox AcceptsReturn="True" Text="{Binding TextInput}" Margin="10,35,10,133"  TextWrapping="Wrap"/>
+                    <Button Content="Execute" Command="{Binding ExecuteCommand}" Margin="226,116,10,97"/>
                 </Grid>
             </TabItem>
+
         </TabControl>
     </Grid>
 </Window>

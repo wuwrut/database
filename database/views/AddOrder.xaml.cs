@@ -31,10 +31,14 @@ namespace database
             List<String> cType = new List<String> { "Bron", "Amunicja" };
             ComboType.ItemsSource = cType;
             ComboType.SelectedItem = cType[0];
+
+            //TODO Subtype implementation with query!!!
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
+
+
             if(ComboType.SelectedItem.ToString() == "Bron")
             {
                 String weaponName = ComboSubtype.SelectedItem.ToString();
@@ -46,13 +50,18 @@ namespace database
                 String ammoName = ComboSubtype.SelectedItem.ToString();
                 int quantity = int.Parse(BoxQuantity.Text.ToString());
                 ammo.Add(Tuple.Create(ammoName, quantity));
-            }
+            }   
+           
+           if(BoxAdded.Text == "Your current order is empty!")
+           {
+                BoxAdded.AppendText(ComboSubtype.SelectedItem.ToString() + " x" + BoxQuantity.Text);
+                BoxAdded.AppendText(Environment.NewLine);
+           }
         }
 
         private void AddNewOrder_Click(object sender, RoutedEventArgs e)
         {
             DatabaseModel DataModel = new DatabaseModel();
-
 
             if (RadioButton.IsChecked == true && BoxComments.Text.Length > 1)
             {

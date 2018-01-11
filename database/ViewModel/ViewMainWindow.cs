@@ -60,7 +60,6 @@ namespace database.ViewModel
                     newUserWindow.Show();
                     break;
             }
-            //Works, for testing it's disabled.
             CloseWindow();
         }
     }
