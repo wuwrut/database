@@ -178,17 +178,17 @@ namespace database.models
         /// <param name="cert"></param>
         /// <param name="retail">type of order: true - retail, false - wholesail</param>
         /// <param name="adnotations">additional adnotations about order</param>
-        public void CreateOrder(DateTime arrival_date, ICollection<Tuple<int,int>> ammo, ICollection<Tuple<int, int>> weapons, string cert, bool retail, string adnotations = null)
+        public void CreateOrder(DateTime arrival_date, ICollection<Tuple<string,int>> ammo, ICollection<Tuple<string, int>> weapons, string cert, bool retail, string adnotations = null)
         {
             DataTable tmp_ammo = new DataTable();
-            tmp_ammo.Columns.Add("numer_pudelka");
+            tmp_ammo.Columns.Add("kaliber");
             tmp_ammo.Columns.Add("ilosc");
 
             foreach (var i in ammo)
                 tmp_ammo.Rows.Add(i.Item1, i.Item2);
 
             DataTable tmp_weap = new DataTable();
-            tmp_weap.Columns.Add("numer_seryjny");
+            tmp_weap.Columns.Add("nazwa");
             tmp_weap.Columns.Add("ilosc");
 
             foreach (var i in weapons)
