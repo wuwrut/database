@@ -16,11 +16,14 @@ namespace database.ViewModel
         public RelayCommand AddWorkerCommand { get; set; }
         public RelayCommand AddProductionCommand { get; set; }
         public RelayCommand AddMaterialCommand { get; set; }
+        public RelayCommand AddWeaponCommand { get; set; }
+        public RelayCommand AddAmmoCommand { get; set; }
 
         public ViewAccountant()
         {
             DatabaseModel DataModel = new DatabaseModel();
-            //TextOutcome = DataModel.TotalOutcome().ToString();
+            // NULL POINTER EXCEPTION -> 
+            // decimal licz = DataModel.TotalOutcome();
             AddWorkerCommand = new RelayCommand(AddWorker);
             AddProductionCommand = new RelayCommand(AddProduction);
             AddMaterialCommand = new RelayCommand(AddMaterial);
@@ -43,22 +46,32 @@ namespace database.ViewModel
             }
         }
 
-        void AddWorker(object paramater)
+        void AddWorker(object parameter)
         {
             AccountantForm AForm = new AccountantForm(0);
             AForm.Show();
         }
 
-        void AddProduction(object paramater)
+        void AddProduction(object parameter)
         {
             AccountantForm AForm = new AccountantForm(1);
             AForm.Show();
         }
 
-        void AddMaterial(object paramater)
+        void AddMaterial(object parameter)
         {
             AccountantForm AForm = new AccountantForm(2);
             AForm.Show();
+        }
+
+        void AddAmmo(object parameter)
+        {
+
+        }
+
+        void AddWeapon(object parameter)
+        {
+
         }
     }
 }

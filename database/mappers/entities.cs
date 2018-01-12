@@ -19,7 +19,7 @@ namespace database.models
     {
         public int Numer_Seryjny { get; set; }
         public string Nazwa { get; set; }
-        public float Cena { get; set; }
+        public decimal Cena { get; set; }
         public Int64 PRODUKCJA_Numer_Produkcyjny { get; set; }
         public int KATEGORIA_ID { get; set; }
     }

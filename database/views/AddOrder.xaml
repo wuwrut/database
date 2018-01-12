@@ -5,20 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:database"
         mc:Ignorable="d"
-        Title="AddOrder" Height="513" Width="416">
+        ResizeMode="CanMinimize"
+        Title="AddOrder" Height="521" Width="435">
     <Grid>
         <GroupBox Header="Guns &amp; Ammunition" Margin="10,10,10,263">
             <Grid Margin="0,-16,-2,-12">
-                <Label Content="Type" Margin="188,19,155,0" VerticalAlignment="Top" RenderTransformOrigin="0.4,-0.423"/>
-                <ComboBox Name="ComboType" Margin="248,19,10,0" RenderTransformOrigin="0.5,0.5" Height="26" VerticalAlignment="Top"/>
-                <Label Content="Subtype" Margin="188,67,137,0" VerticalAlignment="Top"/>
-                <ComboBox Name="ComboSubtype" Margin="248,67,10,0" Height="26" VerticalAlignment="Top"/>
-                <Label Content="Quantity" Margin="188,113,135,0" RenderTransformOrigin="-0.158,0.846" Height="29" VerticalAlignment="Top"/>
-                <TextBox Name="BoxQuantity" DataObject.Pasting="NumericOnly" Margin="248,115,10,0" TextWrapping="Wrap" RenderTransformOrigin="0.167,0.304" TextChanged="BoxQuantity_TextChanged" Height="27" VerticalAlignment="Top"/>
-                <Button Name="AddButton" Content="Add to Order" Margin="248,164,10,22" Click="AddButton_Click"/>
-                <Label Content="Currently added" HorizontalAlignment="Left" Margin="10,19,0,0" VerticalAlignment="Top"/>
-                <TextBox Name="BoxAdded" Text="Your current order is empty!" Margin="10,45,211,22" TextWrapping="Wrap"/>
-                <Separator Margin="89,48,101,60" RenderTransformOrigin="0.47,0.52">
+                <Separator Margin="88,-1,107,19" RenderTransformOrigin="0.47,0.52">
                     <Separator.RenderTransform>
                         <TransformGroup>
                             <RotateTransform Angle="90"/>
@@ -26,6 +18,16 @@
                         </TransformGroup>
                     </Separator.RenderTransform>
                 </Separator>
+                <Label Content="Type" Margin="186,19,157,0" VerticalAlignment="Top" RenderTransformOrigin="0.4,-0.423"/>
+                <ComboBox Name="ComboType" Margin="260,19,10,0" RenderTransformOrigin="0.5,0.5" Height="26" VerticalAlignment="Top" SelectionChanged="ComboType_SelectionChanged"/>
+                <Label Content="Subtype" Margin="186,67,157,0" VerticalAlignment="Top"/>
+                <ComboBox Name="ComboSubtype" Margin="260,67,10,0" Height="26" VerticalAlignment="Top"/>
+                <Label Content="Quantity" Margin="186,113,137,0" RenderTransformOrigin="-0.158,0.846" Height="29" VerticalAlignment="Top"/>
+                <TextBox Name="BoxQuantity" DataObject.Pasting="NumericOnly" Margin="260,115,10,0" TextWrapping="Wrap" RenderTransformOrigin="0.167,0.304" TextChanged="BoxQuantity_TextChanged" Height="27" VerticalAlignment="Top"/>
+                <Button Name="AddButton" Content="Add to Order" Margin="260,164,10,22" Click="AddButton_Click"/>
+                <Label Content="Currently added" HorizontalAlignment="Left" Margin="10,19,0,0" VerticalAlignment="Top"/>
+                <TextBox Name="BoxAdded" Text="Your current order is empty!" Margin="10,45,0,22" TextWrapping="Wrap" HorizontalAlignment="Left" Width="159"/>
+
 
             </Grid>
         </GroupBox>
@@ -33,7 +35,7 @@
 
         <CheckBox Name="RadioButton" Content="Retail" HorizontalAlignment="Left" Margin="44,246,0,0" VerticalAlignment="Top" Height="28" Width="72" RenderTransformOrigin="0.569,1.571"/>
         <Label Content="Weapon Permission Number" HorizontalAlignment="Left" Margin="168,219,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="WPNumber" Margin="168,246,24,208" TextWrapping="Wrap"/>
+        <TextBox Name="WPNumber" Margin="168,246,24,0" TextWrapping="Wrap" Height="28" VerticalAlignment="Top"/>
 
         <Label Content="Arrival Date" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="44,293,0,0" RenderTransformOrigin="1.167,-1.077"/>
         <DatePicker Name="DatePicker" Margin="168,293,25,0" VerticalAlignment="Top" Height="29" SelectedDateChanged="DatePicker_DateChanged"/>

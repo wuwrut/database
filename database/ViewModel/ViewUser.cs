@@ -17,7 +17,7 @@ namespace database.ViewModel
         public class TableNames
         {
             public String Name { get; set; }
-            public ICollection<TableAttribute> TableAttributes { get; set; }
+            public IList<TableAttribute> TableAttributes { get; set; }
         };
 
         public class TableAttribute
@@ -31,14 +31,14 @@ namespace database.ViewModel
         public RelayCommand ListOrders { get; set; }
 
         public IList<TableNames> TableNamesFromDatabase { get; private set; }
-        public ICollection<TableAttribute> TableAttributesFromDatabase { get; private set; }
+        public IList<TableAttribute> TableAttributesFromDatabase { get; private set; }
         public TableAttribute SelectedAttribute { get; set; }
 
         public ViewUser()
         {
             this.TableNamesFromDatabase = new List<TableNames>()
             {
-                new TableNames(){Name="BRON",
+                new TableNames(){Name="Bron",
                     TableAttributes = new List<TableAttribute>()
                     {
                         new TableAttribute(){Name = ""},
@@ -47,7 +47,7 @@ namespace database.ViewModel
                     }
                 },
 
-                new TableNames(){Name="AMUNICJA",
+                new TableNames(){Name="Amunicja",
                     TableAttributes = new List<TableAttribute>()
                     {
                         new TableAttribute(){Name = ""},
@@ -57,12 +57,14 @@ namespace database.ViewModel
                     }
                 }
             };
-            this.SelectedTableName = this.TableNamesFromDatabase[0];    
+            this.SelectedTableName = this.TableNamesFromDatabase[0];
+            this.SelectedAttribute = this.TableAttributesFromDatabase[0];
+            TextSearch = "";
 
             ShowDataCommand = new RelayCommand(DataCommand);
 
             ListOrders = new RelayCommand(ListUserOrders);
-            AddNewOrder = new RelayCommand(AddNewUserOrder);
+            AddNewOrder = new RelayCommand(AddNewUserOrder);            
         }
 
 
@@ -79,25 +81,26 @@ namespace database.ViewModel
                 {
                     _selectedTableName = value;
                     RaisePropertyChanged("SelectedTableName");
-                    this.TableAttributesFromDatabase = _selectedTableName.TableAttributes;                           
+                    this.TableAttributesFromDatabase = _selectedTableName.TableAttributes;
+                    this.SelectedAttribute = this.TableAttributesFromDatabase[0];
                     RaisePropertyChanged("TableAttributesFromDatabase");
                 }
             }
         }
 
-        string _TextBox1;
-        public string TextBox1
+        string _textSearch;
+        public string TextSearch
         {
             get
             {
-                return _TextBox1;
+                return _textSearch;
             }
             set
             {
-                if (_TextBox1 != value)
+                if (_textSearch != value)
                 {
-                    _TextBox1 = value;
-                    RaisePropertyChanged("TextBox1");
+                    _textSearch = value;
+                    RaisePropertyChanged("TextSearch");
                 }
             }
         }
@@ -106,16 +109,26 @@ namespace database.ViewModel
         {
             String que = "SELECT * FROM " + SelectedTableName.Name;
 
-            if(SelectedAttribute.Name != "" && TextBox1 != "")
+            if(SelectedAttribute.Name.Length > 0 && TextSearch.Length > 0)
             {
-                que += " WHERE CONTAINS(" + SelectedAttribute.Name + ", " + TextBox1 + ")";
+                
+                que += " WHERE " + SelectedAttribute.Name + " LIKE \'%" + TextSearch + "%\' ";
             }
-            DatabaseModel DataModel = new DatabaseModel();
-            IEnumerable<dynamic> Table = DataModel.Query(sql_query: que);
 
-            //NOT WORKING!
-            //ShowData DataWindow = new ShowData(Table, false);
-            //DataWindow.Show();
+            DatabaseModel DataModel = new DatabaseModel();
+
+            if(SelectedTableName.Name == "Bron")
+            {
+                IEnumerable<Bron> Table = DataModel.Query<Bron>(sql_query: que);
+                ShowData DataWindow = new ShowData(Table, false);
+                DataWindow.Show();
+            }
+            else
+            {
+                IEnumerable<Amunicja> Table = DataModel.Query<Amunicja>(sql_query: que);
+                ShowData DataWindow = new ShowData(Table, false);
+                DataWindow.Show();
+            }            
         }
 
         void ListUserOrders(object paramater)
