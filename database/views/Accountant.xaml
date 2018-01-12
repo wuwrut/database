@@ -11,12 +11,16 @@
     </Window.DataContext>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="165*"/>
-            <ColumnDefinition Width="227*"/>
+            <ColumnDefinition Width="39*"/>
+            <ColumnDefinition Width="59*"/>
         </Grid.ColumnDefinitions>
-        <Button Content="Hire Worker" Command="{Binding AddWorkerCommand}"  HorizontalAlignment="Left" Margin="38,50,0,0" VerticalAlignment="Top" Width="91" Height="33"/>
-        <Button Content="New Production" Command="{Binding AddProductionCommand}" HorizontalAlignment="Left" Margin="38,125,0,0" VerticalAlignment="Top" Width="91" Height="33"/>
-        <Button Content="Order Material" Command="{Binding AddMaterialCommand}" HorizontalAlignment="Left" Margin="38,200,0,0" VerticalAlignment="Top" Width="91" Height="33"/>
+        <Button Content="Hire Worker" Command="{Binding AddWorkerCommand}" Margin="32,50,30,0" VerticalAlignment="Top" Height="33"/>
+        <Button Content="New Production" Command="{Binding AddProductionCommand}" Margin="32,125,30,0" VerticalAlignment="Top" Height="33" RenderTransformOrigin="2.117,2.697"/>
+        <Button Content="Order Material" Command="{Binding AddMaterialCommand}" Margin="32,200,30,0" VerticalAlignment="Top" Height="33"/>
+
+        <TextBox Grid.Column="1" IsReadOnly="True" Text="{Binding TextOutcome}" Margin="92,50,21,206" TextWrapping="Wrap" TextAlignment="Center"/>
+        <Label Content="Outcome:" Grid.Column="1" HorizontalAlignment="Left" Margin="26,50,0,0" VerticalAlignment="Top" Height="33" Width="61"/>
+
 
     </Grid>
 </Window>

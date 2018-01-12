@@ -11,7 +11,7 @@ using System.Collections.Generic;
 
 namespace database.ViewModel
 {
-    class ViewAccountant
+    class ViewAccountant : ViewBase
     {
         public RelayCommand AddWorkerCommand { get; set; }
         public RelayCommand AddProductionCommand { get; set; }
@@ -19,9 +19,28 @@ namespace database.ViewModel
 
         public ViewAccountant()
         {
+            DatabaseModel DataModel = new DatabaseModel();
+            // DOESNT WORK -> TextOutcome = DataModel.TotalOutcome().ToString();
             AddWorkerCommand = new RelayCommand(AddWorker);
             AddProductionCommand = new RelayCommand(AddProduction);
             AddMaterialCommand = new RelayCommand(AddMaterial);
+        }
+
+        string _textOutcome;
+        public string TextOutcome
+        {
+            get
+            {
+                return _textOutcome;
+            }
+            set
+            {
+                if (_textOutcome != value)
+                {
+                    _textOutcome = value;
+                    RaisePropertyChanged("TextOutcome");
+                }
+            }
         }
 
         void AddWorker(object paramater)

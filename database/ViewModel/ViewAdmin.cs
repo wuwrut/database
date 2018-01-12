@@ -11,7 +11,7 @@ using System.Collections.Generic;
 
 namespace database.ViewModel
 {
-    class ViewAdmin : ViewMainWindow
+    class ViewAdmin : ViewBase
     {
         public RelayCommand ShowDataCommand { get; set; }
         public RelayCommand ExecuteCommand { get; set; }
