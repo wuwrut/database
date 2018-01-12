@@ -121,11 +121,10 @@ namespace database.ViewModel
         void ListUserOrders(object paramater)
         {
             DatabaseModel DataModel = new DatabaseModel();
-            IEnumerable Table = DataModel.Query("SELECT * FROM ZAMOWIENIE");
+            IEnumerable<dynamic> Table = DataModel.Query("SELECT * FROM ZAMOWIENIE");
 
-            //NOT WORKING!
-            //ShowData DataWindow = new ShowData(Table, false);
-            //DataWindow.Show();
+            ShowData DataWindow = new ShowData(Table, false);
+            DataWindow.Show();
         }
 
         void AddNewUserOrder(object paramter)

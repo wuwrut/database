@@ -5,8 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:database"
         mc:Ignorable="d"
-        Title="AccountantForm" Height="300" Width="300">
+        Title="AccountantForm" Height="374" Width="243">
     <Grid>
-        
+        <Grid HorizontalAlignment="Left" Height="323" Margin="10,10,0,0" VerticalAlignment="Top" Width="233">
+            <TextBox Margin="87,23,26,277" TextWrapping="Wrap" Text="TextBox"/>
+            <Label Content="Label" HorizontalAlignment="Left" Margin="10,23,0,0" VerticalAlignment="Top" Width="72" Height="23"/>
+            <TextBox Margin="87,65,26,235" TextWrapping="Wrap" Text="TextBox"/>
+            <TextBox Margin="87,103,26,197" TextWrapping="Wrap" Text="TextBox"/>
+        </Grid>
+
+
     </Grid>
 </Window>
