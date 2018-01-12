@@ -196,11 +196,11 @@ namespace database.models
 
             using (SqlConnection con = new SqlConnection(con_str))
             {
-                using (SqlCommand cmd = new SqlCommand("NowaProdukcja", con))
+                using (SqlCommand cmd = new SqlCommand("NoweZamowienie", con))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@data_dostawy", SqlDbType.Date).Value = arrival_date;
-                    cmd.Parameters.Add("@certyfikat", SqlDbType.VarChar).Value = cert;
+                    cmd.Parameters.Add("@cerytfikat", SqlDbType.VarChar).Value = cert;
                     cmd.Parameters.Add("@detaliczne", SqlDbType.Bit).Value = retail;
 
                     if (adnotations != null)

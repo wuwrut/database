@@ -28,22 +28,20 @@
                 <Label Content="Currently added" HorizontalAlignment="Left" Margin="10,19,0,0" VerticalAlignment="Top"/>
                 <TextBox Name="BoxAdded" Text="Your current order is empty!" Margin="10,45,0,22" TextWrapping="Wrap" HorizontalAlignment="Left" Width="159"/>
 
-
             </Grid>
         </GroupBox>
 
+        <CheckBox Name="RadioButton" Content="Retail" HorizontalAlignment="Left" Margin="44,255,0,0" VerticalAlignment="Top" Height="28" Width="72" RenderTransformOrigin="0.569,1.571"/>
+        <Label Content="Weapon Permission Number" HorizontalAlignment="Left" Margin="167,229,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="WPNumber" Margin="167,255,25,0" TextWrapping="Wrap" Height="28" VerticalAlignment="Top"/>
 
-        <CheckBox Name="RadioButton" Content="Retail" HorizontalAlignment="Left" Margin="44,246,0,0" VerticalAlignment="Top" Height="28" Width="72" RenderTransformOrigin="0.569,1.571"/>
-        <Label Content="Weapon Permission Number" HorizontalAlignment="Left" Margin="168,219,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="WPNumber" Margin="168,246,24,0" TextWrapping="Wrap" Height="28" VerticalAlignment="Top"/>
-
-        <Label Content="Arrival Date" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="44,293,0,0" RenderTransformOrigin="1.167,-1.077"/>
-        <DatePicker Name="DatePicker" Margin="168,293,25,0" VerticalAlignment="Top" Height="29" SelectedDateChanged="DatePicker_DateChanged"/>
+        <Label Content="Arrival Date" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="44,302,0,0" RenderTransformOrigin="1.167,-1.077"/>
+        <DatePicker Name="DatePicker" Margin="168,302,25,0" VerticalAlignment="Top" Height="29" SelectedDateChanged="DatePicker_DateChanged"/>
 
         <TextBox Name="BoxComments" Margin="10,366,10,60" TextWrapping="Wrap"/>
         <Label Content="Comments" HorizontalAlignment="Left" Margin="10,335,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.478,1.077"/>
 
-        <Button Name="AddNewOrder" Content="File Order" Margin="263,437,10,15" Click="AddNewOrder_Click"/>
+        <Button Name="AddNewOrder" Content="File Order" Margin="271,437,10,15" Click="AddNewOrder_Click"/>
 
 
 

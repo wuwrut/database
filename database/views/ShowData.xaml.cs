@@ -19,7 +19,21 @@ namespace database
         public ShowData(IEnumerable<dynamic> Data, bool UpdatePermission)
         {
             InitializeComponent();
-            this.DataGrid.ItemsSource = Data;
+            if (UpdatePermission)
+            {
+                AdvancedDataGrid.Visibility = Visibility.Visible;
+                this.AdvancedDataGrid.ItemsSource = Data;
+            }
+            else
+            {
+                DataGrid.Visibility = Visibility.Visible;
+                this.DataGrid.ItemsSource = Data;
+            }
+        }
+
+        private void ChangeText(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

@@ -40,7 +40,6 @@ namespace database
             ComboSubtype.ItemsSource = subBron;
             DatePicker.SelectedDate = DateTime.Today.AddDays(4);
 
-            //TODO Subtype implementation with query!!!
             DatabaseModel DataModel = new DatabaseModel();
 
             IEnumerable<Bron> enumBron = DataModel.Query<Bron>("SELECT NAZWA FROM BRON");
@@ -94,21 +93,22 @@ namespace database
 
                 if (RadioButton.IsChecked == true && BoxComments.Text.Length > 1)
                 {
-                    DataModel.CreateOrder(DatePicker.SelectedDate.Value, ammo, weapons, WPNumber.Text, true, BoxComments.Text);
+                    DataModel.CreateOrder(DatePicker.SelectedDate.Value, ammo, weapons, WPNumber.Text.ToString(), true, BoxComments.Text);
                 }
                 else if (RadioButton.IsChecked == true)
                 {
-                    DataModel.CreateOrder(DatePicker.SelectedDate.Value, ammo, weapons, WPNumber.Text, true);
+                    DataModel.CreateOrder(DatePicker.SelectedDate.Value, ammo, weapons, WPNumber.Text.ToString(), true);
                 }
                 else if (BoxComments.Text.Length > 1)
                 {
-                    DataModel.CreateOrder(DatePicker.SelectedDate.Value, ammo, weapons, "", false, BoxComments.Text);
+                    DataModel.CreateOrder(DatePicker.SelectedDate.Value, ammo, weapons, WPNumber.Text.ToString(), false, BoxComments.Text);
                 }
                 else
                 {
-                    DataModel.CreateOrder(DatePicker.SelectedDate.Value, ammo, weapons, "", false);
+                    DataModel.CreateOrder(DatePicker.SelectedDate.Value, ammo, weapons, WPNumber.Text.ToString(), false);
                 }
             }
+            this.Close();
         }
 
         private void BoxQuantity_TextChanged(object sender, TextChangedEventArgs e)
