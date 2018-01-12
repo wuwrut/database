@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Linq;
 using System.Collections.ObjectModel;
+using database.models;
+using database.Helpers;
 
 namespace database
 {
@@ -17,7 +19,7 @@ namespace database
         public ShowData(IEnumerable<dynamic> Data, bool UpdatePermission)
         {
             InitializeComponent();
-            //this.DataGrid.ItemsSource = Data.ToList()
+            this.DataGrid.ItemsSource = Data;
         }
     }
 }

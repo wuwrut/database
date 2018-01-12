@@ -114,14 +114,14 @@ namespace database.ViewModel
             IEnumerable<dynamic> Table = DataModel.Query(sql_query: que);
 
             //NOT WORKING!
-            ShowData DataWindow = new ShowData(Table, false);
-            DataWindow.Show();
+            //ShowData DataWindow = new ShowData(Table, false);
+            //DataWindow.Show();
         }
 
         void ListUserOrders(object paramater)
         {
             DatabaseModel DataModel = new DatabaseModel();
-            IEnumerable<dynamic> Table = DataModel.Query("SELECT * FROM ZAMOWIENIE");
+            IEnumerable<Zamowienie> Table = DataModel.Query<Zamowienie>("SELECT * FROM ZAMOWIENIE");
 
             ShowData DataWindow = new ShowData(Table, false);
             DataWindow.Show();

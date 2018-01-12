@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:database"
         x:Class="database.ShowData"
         mc:Ignorable="d"
-        Title="Data" Height="443" Width="445">
+        Title="Data" Height="620" Width="794.5">
     <Grid>
         <DataGrid Name="DataGrid" Margin="10"/>
     </Grid>

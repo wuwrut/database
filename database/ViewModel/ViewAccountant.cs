@@ -20,7 +20,7 @@ namespace database.ViewModel
         public ViewAccountant()
         {
             DatabaseModel DataModel = new DatabaseModel();
-            TextOutcome = DataModel.TotalOutcome().ToString();
+            //TextOutcome = DataModel.TotalOutcome().ToString();
             AddWorkerCommand = new RelayCommand(AddWorker);
             AddProductionCommand = new RelayCommand(AddProduction);
             AddMaterialCommand = new RelayCommand(AddMaterial);
