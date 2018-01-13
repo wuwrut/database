@@ -129,7 +129,7 @@ namespace database
         //NOT WORKING??
         private void BoxQuantity_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (!int.TryParse(BoxQuantity.Text, out int result))
+            if (int.TryParse(BoxQuantity.Text, out int result))
             {
                 BoxQuantity.BorderBrush = _defaultBrush;
             }

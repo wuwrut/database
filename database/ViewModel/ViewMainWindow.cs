@@ -60,7 +60,7 @@ namespace database.ViewModel
                     newUserWindow.Show();
                     break;
             }
-            CloseWindow();
+            //CloseWindow();
         }
     }
 }

@@ -79,6 +79,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="views\ModifyForm.xaml.cs">
+      <DependentUpon>ModifyForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="views\AccountantForm.xaml.cs">
       <DependentUpon>AccountantForm.xaml</DependentUpon>
     </Compile>
@@ -171,6 +174,10 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Page Include="views\ModifyForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="views\AccountantForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

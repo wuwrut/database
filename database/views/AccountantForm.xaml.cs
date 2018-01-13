@@ -1,4 +1,5 @@
-﻿using System;
+﻿using database.models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,10 +21,13 @@ namespace database
     public partial class AccountantForm : Window
     {
         private int formMode;
+        private Brush _defaultBrush; 
+
         public AccountantForm(int command)
         {
             InitializeComponent();
 
+            _defaultBrush = Box1.BorderBrush;
             formMode = command;
 
             switch (formMode)
@@ -58,13 +62,91 @@ namespace database
 
         private void Button1_Click(object sender, RoutedEventArgs e)
         {
+            DatabaseModel DataModel = new DatabaseModel();
+
             switch (formMode)
             {
                 case (0):
+                    if (long.TryParse(Box1.Text, out long r1) && Box2.Text.Length > 0 && Box3.Text.Length > 0 && Box4.Text.Length > 0 && int.TryParse(Box5.Text, out int r2))
+                    {
+                        DataModel.CreateWorker(long.Parse(Box1.Text), Box2.Text, Box3.Text, Box4.Text, int.Parse(Box5.Text));
+                        this.Close();
+                    }
+                    else
+                    {
+                        if (!long.TryParse(Box1.Text, out long r6))
+                            Box1.BorderBrush = Brushes.Red;
+                        else
+                            Box2.BorderBrush = _defaultBrush;
+
+                        if (Box2.Text.Length == 0)
+                            Box2.BorderBrush = Brushes.Red;
+                        else
+                            Box2.BorderBrush = _defaultBrush;
+
+                        if (Box3.Text.Length == 0)
+                            Box3.BorderBrush = Brushes.Red;
+                        else
+                            Box3.BorderBrush = _defaultBrush;
+
+                        if (Box4.Text.Length == 0)
+                            Box4.BorderBrush = Brushes.Red;
+                        else
+                            Box4.BorderBrush = _defaultBrush;
+
+                        if (int.TryParse(Box5.Text, out int r7))
+                            Box5.BorderBrush = Brushes.Red;
+                        else
+                            Box5.BorderBrush = _defaultBrush;
+                    }
                     break;
                 case (1):
+                    if (Box1.Text.Length > 0 && int.TryParse(Box2.Text, out int r3) && Decimal.TryParse(Box3.Text, out Decimal r4))
+                    {
+                        DataModel.CreateAmmo(Box1.Text, int.Parse(Box2.Text), Decimal.Parse(Box3.Text));
+                        this.Close();
+                    }
+                    else
+                    {
+                        if (Box1.Text.Length == 0)
+                            Box1.BorderBrush = Brushes.Red;
+                        else
+                            Box2.BorderBrush = _defaultBrush;
+
+                        if (!int.TryParse(Box2.Text, out int r8))
+                            Box2.BorderBrush = Brushes.Red;
+                        else
+                            Box2.BorderBrush = _defaultBrush;
+
+                        if (!Decimal.TryParse(Box3.Text, out Decimal r9))
+                            Box3.BorderBrush = Brushes.Red;
+                        else
+                            Box3.BorderBrush = _defaultBrush;
+                    }
                     break;
                 default:
+                    if (Box1.Text.Length > 0 && Box2.Text.Length > 0 && Decimal.TryParse(Box3.Text, out Decimal r5))
+                    {
+                        DataModel.CreateWeapon(Box1.Text, Box2.Text, Decimal.Parse(Box3.Text));
+                        this.Close();
+                    }
+                    else
+                    {
+                        if (Box1.Text.Length == 0)
+                            Box1.BorderBrush = Brushes.Red;
+                        else
+                            Box2.BorderBrush = _defaultBrush;
+
+                        if (Box2.Text.Length == 0)
+                            Box2.BorderBrush = Brushes.Red;
+                        else
+                            Box2.BorderBrush = _defaultBrush;
+
+                        if (!Decimal.TryParse(Box3.Text, out Decimal r11))
+                            Box3.BorderBrush = Brushes.Red;
+                        else
+                            Box3.BorderBrush = _defaultBrush;
+                    }
                     break;
             }
         }

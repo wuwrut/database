@@ -121,13 +121,13 @@ namespace database.ViewModel
                 if (SelectedTableName.Name == "Bron")
                 {
                     IEnumerable<Bron> Table = DataModel.Query<Bron>(sql_query: que);
-                    ShowData DataWindow = new ShowData(Table, false);
+                    ShowData DataWindow = new ShowData(Table, 0);
                     DataWindow.Show();
                 }
                 else
                 {
                     IEnumerable<Amunicja> Table = DataModel.Query<Amunicja>(sql_query: que);
-                    ShowData DataWindow = new ShowData(Table, false);
+                    ShowData DataWindow = new ShowData(Table, 0);
                     DataWindow.Show();
                 }
             }
@@ -144,7 +144,7 @@ namespace database.ViewModel
             try
             {
                 IEnumerable<Zamowienie> Table = DataModel.Query<Zamowienie>("SELECT * FROM ZAMOWIENIE");
-                ShowData DataWindow = new ShowData(Table, false);
+                ShowData DataWindow = new ShowData(Table, 0);
                 DataWindow.Show();
             }
             catch(Exception e)
