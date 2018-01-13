@@ -6,6 +6,7 @@ using System.Linq;
 using System.Collections.ObjectModel;
 using database.models;
 using database.Helpers;
+using System.Windows.Controls;
 
 namespace database
 {
@@ -33,7 +34,10 @@ namespace database
 
         private void ChangeText(object sender, RoutedEventArgs e)
         {
+            var selectedIndex = DataGridRow.GetRowContainingElement
+              (sender as FrameworkElement).GetIndex();
 
+            //TODO Form with all the tables
         }
     }
 }

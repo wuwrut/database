@@ -40,38 +40,88 @@ namespace database.ViewModel
                 new TableNames(){Name="Bron",
                     TableAttributes = new List<TableAttribute>()
                     {
-                        new TableAttribute(){Name = ""},
+                        new TableAttribute(){Name = "Numer_seryjny"},
                         new TableAttribute(){Name = "Nazwa"},
-                        new TableAttribute(){Name = "Cena"}
+                        new TableAttribute(){Name = "Cena"},
+                        new TableAttribute(){Name = "KATEGORIA_ID"},
                     }
                 },
 
                 new TableNames(){Name="Amunicja",
                     TableAttributes = new List<TableAttribute>()
                     {
-                        new TableAttribute(){Name = ""},
+                        new TableAttribute(){Name = "Numer_pudelka"},
                         new TableAttribute(){Name = "Kaliber"},
                         new TableAttribute(){Name = "Ilosc_amunicji"},
                         new TableAttribute(){Name = "Cena"}
                     }
                 },
 
-                new TableNames(){Name="Hurtowe", TableAttributes = new List<TableAttribute>(){}},
+                new TableNames(){Name="Hurtowe",
+                    TableAttributes = new List<TableAttribute>()
+                    {
+                        new TableAttribute(){Name = "Numer_zamowienia"},
+                        new TableAttribute(){Name = "Zezwolenie_na_bron"},
+                    }
+                },
 
-                new TableNames(){Name="Detaliczne", TableAttributes = new List<TableAttribute>(){}},
-
-                new TableNames(){Name="Dostawa", TableAttributes = new List<TableAttribute>(){}},
-
-                new TableNames(){Name="Kategoria", TableAttributes = new List<TableAttribute>(){}},
-
-                new TableNames(){Name="Material", TableAttributes = new List<TableAttribute>(){}},
-
-                new TableNames(){Name="Pracownik", TableAttributes = new List<TableAttribute>(){}},
-
-                new TableNames(){Name="Produkcja", TableAttributes = new List<TableAttribute>(){}},
-
-                new TableNames(){Name="Zamowienie", TableAttributes = new List<TableAttribute>(){}}
-
+                new TableNames(){Name="Detaliczne",
+                    TableAttributes = new List<TableAttribute>()
+                    {
+                        new TableAttribute(){Name = "Nazwa"},
+                        new TableAttribute(){Name = "Zezwolenie_na_handel"},
+                    }
+                },
+                new TableNames(){Name="Dostawa",
+                    TableAttributes = new List<TableAttribute>()
+                    {
+                        new TableAttribute(){Name = "Nr_dostawy"},
+                        new TableAttribute(){Name = "Nazwa_dostawcy"},
+                        new TableAttribute(){Name = "Koszt_calkowity"},
+                        new TableAttribute(){Name = "Srodek_transportu"},
+                    }
+                },
+                new TableNames(){Name="Kategoria",
+                    TableAttributes = new List<TableAttribute>()
+                    {
+                        new TableAttribute(){Name = "ID"},
+                        new TableAttribute(){Name = "Nazwa"},
+                    }
+                },
+                new TableNames(){Name="Material",
+                    TableAttributes = new List<TableAttribute>()
+                    {
+                        new TableAttribute(){Name = "ID"},
+                        new TableAttribute(){Name = "Nazwa"},
+                        new TableAttribute(){Name = "Ilosc"},
+                    }
+                },
+                new TableNames(){Name="Pracownik",
+                    TableAttributes = new List<TableAttribute>()
+                    {
+                        new TableAttribute(){Name = "Pesel"},
+                        new TableAttribute(){Name = "Imie"},
+                        new TableAttribute(){Name = "Nazwisko"},
+                        new TableAttribute(){Name = "Placa"},
+                    }
+                },
+                new TableNames(){Name="Produkcja",
+                    TableAttributes = new List<TableAttribute>()
+                    {
+                        new TableAttribute(){Name = "Numer_produkcyjny"},
+                        new TableAttribute(){Name = "Nazwa_produktu"},
+                        new TableAttribute(){Name = "Ilosc_produktu"},
+                    }
+                },
+                new TableNames(){Name="Zamowienie",
+                    TableAttributes = new List<TableAttribute>()
+                    {
+                        new TableAttribute(){Name = "Numer_zamowienia"},
+                        new TableAttribute(){Name = "Data_dostawy"},
+                        new TableAttribute(){Name = "Data_zamowienia"},
+                        new TableAttribute(){Name = "Uwagi"},
+                    }
+                },
             };
             this.SelectedTableName = this.TableNamesFromDatabase[0];
             this.SelectedAttribute = this.TableAttributesFromDatabase[0];
@@ -97,6 +147,7 @@ namespace database.ViewModel
                     this.TableAttributesFromDatabase = _selectedTableName.TableAttributes;
                     this.SelectedAttribute = this.TableAttributesFromDatabase[0];
                     RaisePropertyChanged("TableAttributesFromDatabase");
+                    RaisePropertyChanged("SelectedAttribute");
                 }
             }
         }
@@ -162,7 +213,7 @@ namespace database.ViewModel
             {
                 DataModel.Execute(TextInput);
             }
-            catch (Exception e) 
+            catch (Exception e)
             {
                 TextOutput += e.Message + Environment.NewLine;
             }
@@ -180,16 +231,45 @@ namespace database.ViewModel
 
             DatabaseModel DataModel = new DatabaseModel();
 
-            if (SelectedTableName.Name == "Bron")
-            {
+            if (SelectedTableName.Name == "Bron") {
                 IEnumerable<Bron> Table = DataModel.Query<Bron>(sql_query: que);
-                ShowData DataWindow = new ShowData(Table, false);
+                ShowData DataWindow = new ShowData(Table, true);
                 DataWindow.Show();
-            }
-            else
-            {
+            } else if (SelectedTableName.Name == "Amunicja") {
                 IEnumerable<Amunicja> Table = DataModel.Query<Amunicja>(sql_query: que);
-                ShowData DataWindow = new ShowData(Table, false);
+                ShowData DataWindow = new ShowData(Table, true);
+                DataWindow.Show();
+            } else if (SelectedTableName.Name == "Hurtowe") {
+                IEnumerable<Hurtowe> Table = DataModel.Query<Hurtowe>(sql_query: que);
+                ShowData DataWindow = new ShowData(Table, true);
+                DataWindow.Show();
+            } else if (SelectedTableName.Name == "Detaliczne") {
+                IEnumerable<Detaliczne> Table = DataModel.Query<Detaliczne>(sql_query: que);
+                ShowData DataWindow = new ShowData(Table, true);
+                DataWindow.Show();
+            } else if (SelectedTableName.Name == "Dostawa") {
+                IEnumerable<Dostawa> Table = DataModel.Query<Dostawa>(sql_query: que);
+                ShowData DataWindow = new ShowData(Table, true);
+                DataWindow.Show();
+            } else if (SelectedTableName.Name == "Kategoria") {
+                IEnumerable<Kategoria> Table = DataModel.Query<Kategoria>(sql_query: que);
+                ShowData DataWindow = new ShowData(Table, true);
+                DataWindow.Show();
+            } else if (SelectedTableName.Name == "Material") {
+                IEnumerable<Material> Table = DataModel.Query<Material>(sql_query: que);
+                ShowData DataWindow = new ShowData(Table, true);
+                DataWindow.Show();
+            } else if (SelectedTableName.Name == "Pracownik") {
+                IEnumerable<Pracownik> Table = DataModel.Query<Pracownik>(sql_query: que);
+                ShowData DataWindow = new ShowData(Table, true);
+                DataWindow.Show();
+            } else if (SelectedTableName.Name == "Produkcja") {
+                IEnumerable<Produkcja> Table = DataModel.Query<Produkcja>(sql_query: que);
+                ShowData DataWindow = new ShowData(Table, true);
+                DataWindow.Show();
+            } else if (SelectedTableName.Name == "Zamowienie") {
+                IEnumerable<Zamowienie> Table = DataModel.Query<Zamowienie>(sql_query: que);
+                ShowData DataWindow = new ShowData(Table, true);
                 DataWindow.Show();
             }
         }

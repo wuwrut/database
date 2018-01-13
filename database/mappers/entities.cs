@@ -19,7 +19,7 @@ namespace database.models
     {
         public int Numer_Seryjny { get; set; }
         public string Nazwa { get; set; }
-        public decimal Cena { get; set; }
+        public Decimal Cena { get; set; }
         public Int64 PRODUKCJA_Numer_Produkcyjny { get; set; }
         public int KATEGORIA_ID { get; set; }
     }
@@ -52,5 +52,30 @@ namespace database.models
         public DateTime Data_Dostawy { get; set; }
         public DateTime Data_Zamowienia { get; set; }
         public string Uwagi { get; set; }
+    }
+
+    public class Hurtowe
+    {
+        public Int64 Numer_Zamowienia { get; set; }
+        public string Zezwolenie_Na_Handel { get; set; }
+    }
+
+    public class Detaliczne
+    {
+        public Int64 Numer_Zamowienia { get; set; }
+        public string Zezwolenie_Na_Bron { get; set; }
+    }
+
+    public class Dostawa
+    {
+        public Int64 Nr_Dostawy { get; set; }
+        public string Nazwa_dostawcy { get; set; }
+        Decimal Koszt_Calkowity { get; set; }
+    }
+
+    public class Kategoria
+    {
+        public Int64 ID { get; set; }
+        public string Nazwa { get; set; }
     }
 }

@@ -43,10 +43,10 @@ namespace database
             DatabaseModel DataModel = new DatabaseModel();
 
             IEnumerable<Bron> enumBron = DataModel.Query<Bron>("SELECT NAZWA FROM BRON");
-            foreach(Bron eBron in enumBron){
+            foreach (Bron eBron in enumBron) {
                 subBron.Add(eBron.Nazwa);
             }
-            
+
             IEnumerable<Amunicja> enumAmunicja = DataModel.Query<Amunicja>("SELECT KALIBER FROM AMUNICJA");
             foreach (Amunicja eAmunicja in enumAmunicja)
             {
@@ -58,27 +58,33 @@ namespace database
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-
-            if (ComboType.SelectedItem.ToString() == "Bron")
+            if (!int.TryParse(BoxQuantity.Text, out int result))
             {
-                String weaponName = ComboSubtype.SelectedItem.ToString();
-                int quantity = int.Parse(BoxQuantity.Text.ToString());
-                weapons.Add(Tuple.Create(weaponName, quantity));
+                BoxQuantity.BorderBrush = Brushes.Red;
             }
             else
-            {
-                String ammoName = ComboSubtype.SelectedItem.ToString();
-                int quantity = int.Parse(BoxQuantity.Text.ToString());
-                ammo.Add(Tuple.Create(ammoName, quantity));
-            }
+            { 
+                if (ComboType.SelectedItem.ToString() == "Bron")
+                {
+                    String weaponName = ComboSubtype.SelectedItem.ToString();
+                    int quantity = int.Parse(BoxQuantity.Text.ToString());
+                    weapons.Add(Tuple.Create(weaponName, quantity));
+                }
+                else
+                {
+                    String ammoName = ComboSubtype.SelectedItem.ToString();
+                    int quantity = int.Parse(BoxQuantity.Text.ToString());
+                    ammo.Add(Tuple.Create(ammoName, quantity));
+                }
 
-            if (BoxAdded.Text == "Your current order is empty!")
-            {
-                BoxAdded.Text = "";
-            }
+                if (BoxAdded.Text == "Your current order is empty!")
+                {
+                    BoxAdded.Text = "";
+                }
 
-            BoxAdded.AppendText(ComboSubtype.SelectedItem.ToString() + " x" + BoxQuantity.Text);
-            BoxAdded.AppendText(Environment.NewLine);
+                BoxAdded.AppendText(ComboSubtype.SelectedItem.ToString() + " x" + BoxQuantity.Text);
+                BoxAdded.AppendText(Environment.NewLine);
+            }
         }
 
         private void AddNewOrder_Click(object sender, RoutedEventArgs e)
@@ -111,9 +117,18 @@ namespace database
             this.Close();
         }
 
+
+        //NOT WORKING??
         private void BoxQuantity_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            if (!int.TryParse(BoxQuantity.Text, out int result))
+            {
+                BoxQuantity.BorderBrush = _defaultBrush;
+            }
+            else
+            {
+                BoxQuantity.BorderBrush = Brushes.Red;
+            }
         }
 
         private void DatePicker_DateChanged(object sender, SelectionChangedEventArgs e)
@@ -126,29 +141,6 @@ namespace database
             {
                 DatePicker.BorderBrush = _defaultBrush;
             }
-        }
-
-        private void NumericOnly(object sender, DataObjectPastingEventArgs e)
-        {
-            if (e.DataObject.GetDataPresent(typeof(String)))
-            {
-                String text = (String)e.DataObject.GetData(typeof(String));
-                if (!IsTextAllowed(text))
-                {
-                    e.CancelCommand();
-                }
-            }
-            else
-            {
-                e.CancelCommand();
-            }
-        }
-
-
-        private static bool IsTextAllowed(string text)
-        {
-            Regex regex = new Regex("[^0-9]+"); //regex that matches disallowed text
-            return !regex.IsMatch(text);
         }
 
         private void ComboType_SelectionChanged(object sender, SelectionChangedEventArgs e)

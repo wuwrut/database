@@ -134,8 +134,8 @@ namespace database.ViewModel
         void ListUserOrders(object paramater)
         {
             DatabaseModel DataModel = new DatabaseModel();
-            IEnumerable<Zamowienie> Table = DataModel.Query<Zamowienie>("SELECT * FROM ZAMOWIENIE");
-
+            IEnumerable<Zamowienie> Table = DataModel.Query<Zamowienie>("SELECT * FROM ZAMOWIENIE");          
+           
             ShowData DataWindow = new ShowData(Table, false);
             DataWindow.Show();
         }
