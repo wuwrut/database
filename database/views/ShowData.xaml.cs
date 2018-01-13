@@ -16,19 +16,21 @@ namespace database
     public partial class ShowData : Window
     {
         public string TextFromLastView;
+        private IList<dynamic> DataFromDatabase;
 
         public ShowData(IEnumerable<dynamic> Data, bool UpdatePermission)
         {
             InitializeComponent();
+            DataFromDatabase = Data.ToList();
             if (UpdatePermission)
             {
                 AdvancedDataGrid.Visibility = Visibility.Visible;
-                this.AdvancedDataGrid.ItemsSource = Data;
+                this.AdvancedDataGrid.ItemsSource = DataFromDatabase;
             }
             else
             {
                 DataGrid.Visibility = Visibility.Visible;
-                this.DataGrid.ItemsSource = Data;
+                this.DataGrid.ItemsSource = DataFromDatabase;
             }
         }
 
@@ -37,7 +39,10 @@ namespace database
             var selectedIndex = DataGridRow.GetRowContainingElement
               (sender as FrameworkElement).GetIndex();
 
+            Bron bron = DataFromDatabase.ElementAt(selectedIndex);
             //TODO Form with all the tables
+
+            
         }
     }
 }
