@@ -40,20 +40,28 @@ namespace database
             ComboSubtype.ItemsSource = subBron;
             DatePicker.SelectedDate = DateTime.Today.AddDays(4);
 
-            DatabaseModel DataModel = new DatabaseModel();
-
-            IEnumerable<Bron> enumBron = DataModel.Query<Bron>("SELECT NAZWA FROM BRON");
-            foreach (Bron eBron in enumBron) {
-                subBron.Add(eBron.Nazwa);
-            }
-
-            IEnumerable<Amunicja> enumAmunicja = DataModel.Query<Amunicja>("SELECT KALIBER FROM AMUNICJA");
-            foreach (Amunicja eAmunicja in enumAmunicja)
+            try
             {
-                subAmunicja.Add(eAmunicja.Kaliber);
-            }
+                DatabaseModel DataModel = new DatabaseModel();
 
-            ComboSubtype.SelectedItem = subBron[0];
+                IEnumerable<Bron> enumBron = DataModel.Query<Bron>("SELECT NAZWA FROM BRON");
+                foreach (Bron eBron in enumBron)
+                {
+                    subBron.Add(eBron.Nazwa);
+                }
+
+                IEnumerable<Amunicja> enumAmunicja = DataModel.Query<Amunicja>("SELECT KALIBER FROM AMUNICJA");
+                foreach (Amunicja eAmunicja in enumAmunicja)
+                {
+                    subAmunicja.Add(eAmunicja.Kaliber);
+                }
+
+                ComboSubtype.SelectedItem = subBron[0];
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)

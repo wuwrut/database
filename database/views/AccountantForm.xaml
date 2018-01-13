@@ -5,18 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:database"
         mc:Ignorable="d"
-        Title="AccountantForm" Height="374" Width="243">
+        Title="AccountantForm" Height="311" Width="272">
     <Grid>
         <Grid Margin="10">
-            <TextBox Name ="Box1" Margin="87,23,26,277" TextWrapping="Wrap" Text="TextBox"/>
-            <TextBox Name ="Box2" Margin="87,65,26,235" TextWrapping="Wrap" Text="TextBox"/>
-            <TextBox Name ="Box3" Margin="87,103,26,197" TextWrapping="Wrap" Text="TextBox"/>
-            <TextBox Name ="Box4" Margin="87,145,26,155" TextWrapping="Wrap" Text="TextBox"/>
-            <Label Name="Label1" Content="Label" HorizontalAlignment="Left" Margin="10,23,0,277" Width="72"/>
-            <Label Name="Label2" Content="Label" HorizontalAlignment="Left" Margin="10,65,0,235" Width="72"/>
-            <Label Name="Label3" Content="Label" HorizontalAlignment="Left" Margin="10,103,0,197" Width="72"/>
-            <Label Name="Label4" Content="Label" HorizontalAlignment="Left" Margin="10,145,0,155" Width="72"/>
-            <Button Content="Submit" Margin="10,286,10,10"/>
+            <TextBox Name ="Box1" Margin="103,10,10,0" TextWrapping="Wrap" Height="23" VerticalAlignment="Top" />
+            <TextBox Name ="Box2" Margin="103,47,10,0" TextWrapping="Wrap" Height="23" VerticalAlignment="Top" />
+            <TextBox Name ="Box3" Margin="103,84,10,0" TextWrapping="Wrap" Height="23" VerticalAlignment="Top" />
+            <TextBox Name ="Box4" Margin="103,123,10,0" TextWrapping="Wrap" Height="23" VerticalAlignment="Top" />
+            <TextBox Name ="Box5" Margin="103,162,10,0" TextWrapping="Wrap" Height="23" VerticalAlignment="Top" />
+            <Label Name="Label1" Content="Label" Margin="10,10,133,0" Height="32" VerticalAlignment="Top"/>
+            <Label Name="Label2" Content="Label" Margin="10,47,133,0" Height="32" VerticalAlignment="Top"/>
+            <Label Name="Label3" Content="Label" Margin="10,84,133,0" Height="34" VerticalAlignment="Top"/>
+            <Label Name="Label4" Content="Label" Margin="10,123,133,0" Height="34" VerticalAlignment="Top"/>
+            <Label Name="Label5" Content="Label" Margin="10,162,133,0" Height="33" VerticalAlignment="Top"/>
+            <Button Name="Button1" Content="Submit" Margin="10,212,10,0" Height="27" VerticalAlignment="Top" Click="Button1_Click"/>
+            
         </Grid>
     </Grid>
 </Window>

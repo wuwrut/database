@@ -19,21 +19,54 @@ namespace database
     /// </summary>
     public partial class AccountantForm : Window
     {
+        private int formMode;
         public AccountantForm(int command)
-        {            
-            switch (command)
-            {
-                case (0):
+        {
+            InitializeComponent();
 
+            formMode = command;
+
+            switch (formMode)
+            {              
+                case (0):
+                    Label1.Content = "PESEL";
+                    Label2.Content = "Name";
+                    Label3.Content = "Surname";
+                    Label4.Content = "Certificate";
+                    Label5.Content = "Revenue";
                     break;
                 case (1):
-
+                    Label1.Content = "Name";
+                    Label2.Content = "Amount";
+                    Label3.Content = "Price";
+                    Label4.Visibility = Visibility.Hidden;
+                    Label5.Visibility = Visibility.Hidden;
+                    Box4.Visibility = Visibility.Hidden;
+                    Box5.Visibility = Visibility.Hidden;
                     break;
                 default:
-
+                    Label1.Content = "Name";
+                    Label2.Content = "Category";
+                    Label3.Content = "Price";
+                    Label4.Visibility = Visibility.Hidden;
+                    Label5.Visibility = Visibility.Hidden;
+                    Box4.Visibility = Visibility.Hidden;
+                    Box5.Visibility = Visibility.Hidden;
                     break;
             }
-            InitializeComponent();
+        }
+
+        private void Button1_Click(object sender, RoutedEventArgs e)
+        {
+            switch (formMode)
+            {
+                case (0):
+                    break;
+                case (1):
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

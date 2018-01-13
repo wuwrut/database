@@ -23,9 +23,9 @@
                     <Label Content="Table" Margin="26,26,230,0" VerticalAlignment="Top" Height="28"/>
                     <ComboBox x:Name="PickAttribute" ItemsSource="{Binding SelectedTableName.TableAttributes}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedAttribute}" Margin="196,82,21,0" ToolTip="{Binding (Validation.Errors)[0].ErrorContent, RelativeSource={RelativeSource Self}}" Height="28" VerticalAlignment="Top"/>
                     <Label Content="Attribute" Margin="26,82,230,0" VerticalAlignment="Top" Height="28"/>
-                    <TextBox Text="{Binding TextSearch, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" FontSize="14" Height="28" Margin="196,141,21,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="1.178,-1"/>
+                    <TextBox Text="{Binding TextSearch, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" FontSize="14" Height="28" Margin="196,138,21,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="1.178,-1"/>
                     <Label Content="Search phrase" Margin="26,141,230,0" VerticalAlignment="Top" Height="28"/>
-                    <Button Content="Find" Command="{Binding ShowDataCommand}" Margin="196,205,21,0" Height="37" VerticalAlignment="Top"/>
+                    <Button Content="Find" Command="{Binding ShowDataCommand}" Margin="196,194,21,0" Height="28" VerticalAlignment="Top"/>
                 </Grid>
             </TabItem>
         </TabControl>

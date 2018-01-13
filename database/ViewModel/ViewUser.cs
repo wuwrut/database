@@ -116,28 +116,41 @@ namespace database.ViewModel
             }
 
             DatabaseModel DataModel = new DatabaseModel();
-
-            if(SelectedTableName.Name == "Bron")
+            try
             {
-                IEnumerable<Bron> Table = DataModel.Query<Bron>(sql_query: que);
-                ShowData DataWindow = new ShowData(Table, false);
-                DataWindow.Show();
+                if (SelectedTableName.Name == "Bron")
+                {
+                    IEnumerable<Bron> Table = DataModel.Query<Bron>(sql_query: que);
+                    ShowData DataWindow = new ShowData(Table, false);
+                    DataWindow.Show();
+                }
+                else
+                {
+                    IEnumerable<Amunicja> Table = DataModel.Query<Amunicja>(sql_query: que);
+                    ShowData DataWindow = new ShowData(Table, false);
+                    DataWindow.Show();
+                }
             }
-            else
+            catch(Exception e)
             {
-                IEnumerable<Amunicja> Table = DataModel.Query<Amunicja>(sql_query: que);
-                ShowData DataWindow = new ShowData(Table, false);
-                DataWindow.Show();
-            }            
+                MessageBox.Show(e.Message);
+            }
         }
 
         void ListUserOrders(object paramater)
         {
             DatabaseModel DataModel = new DatabaseModel();
-            IEnumerable<Zamowienie> Table = DataModel.Query<Zamowienie>("SELECT * FROM ZAMOWIENIE");          
-           
-            ShowData DataWindow = new ShowData(Table, false);
-            DataWindow.Show();
+
+            try
+            {
+                IEnumerable<Zamowienie> Table = DataModel.Query<Zamowienie>("SELECT * FROM ZAMOWIENIE");
+                ShowData DataWindow = new ShowData(Table, false);
+                DataWindow.Show();
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }                  
         }
 
         void AddNewUserOrder(object paramter)
