@@ -231,46 +231,72 @@ namespace database.ViewModel
 
             DatabaseModel DataModel = new DatabaseModel();
 
-            if (SelectedTableName.Name == "Bron") {
-                IEnumerable<Bron> Table = DataModel.Query<Bron>(sql_query: que);
-                ShowData DataWindow = new ShowData(Table, 1);
-                DataWindow.Show();
-            } else if (SelectedTableName.Name == "Amunicja") {
-                IEnumerable<Amunicja> Table = DataModel.Query<Amunicja>(sql_query: que);
-                ShowData DataWindow = new ShowData(Table, 2);
-                DataWindow.Show();
-            } else if (SelectedTableName.Name == "Hurtowe") {
-                IEnumerable<Hurtowe> Table = DataModel.Query<Hurtowe>(sql_query: que);
-                ShowData DataWindow = new ShowData(Table, 3);
-                DataWindow.Show();
-            } else if (SelectedTableName.Name == "Detaliczne") {
-                IEnumerable<Detaliczne> Table = DataModel.Query<Detaliczne>(sql_query: que);
-                ShowData DataWindow = new ShowData(Table, 4);
-                DataWindow.Show();
-            } else if (SelectedTableName.Name == "Dostawa") {
-                IEnumerable<Dostawa> Table = DataModel.Query<Dostawa>(sql_query: que);
-                ShowData DataWindow = new ShowData(Table, 5);
-                DataWindow.Show();
-            } else if (SelectedTableName.Name == "Kategoria") {
-                IEnumerable<Kategoria> Table = DataModel.Query<Kategoria>(sql_query: que);
-                ShowData DataWindow = new ShowData(Table, 6);
-                DataWindow.Show();
-            } else if (SelectedTableName.Name == "Material") {
-                IEnumerable<Material> Table = DataModel.Query<Material>(sql_query: que);
-                ShowData DataWindow = new ShowData(Table, 7);
-                DataWindow.Show();
-            } else if (SelectedTableName.Name == "Pracownik") {
-                IEnumerable<Pracownik> Table = DataModel.Query<Pracownik>(sql_query: que);
-                ShowData DataWindow = new ShowData(Table, 8);
-                DataWindow.Show();
-            } else if (SelectedTableName.Name == "Produkcja") {
-                IEnumerable<Produkcja> Table = DataModel.Query<Produkcja>(sql_query: que);
-                ShowData DataWindow = new ShowData(Table, 9);
-                DataWindow.Show();
-            } else if (SelectedTableName.Name == "Zamowienie") {
-                IEnumerable<Zamowienie> Table = DataModel.Query<Zamowienie>(sql_query: que);
-                ShowData DataWindow = new ShowData(Table, 10);
-                DataWindow.Show();
+            try
+            {
+                if (SelectedTableName.Name == "Bron")
+                {
+                    IEnumerable<Bron> Table = DataModel.Query<Bron>(sql_query: que);
+                    ShowData DataWindow = new ShowData(Table, 1);
+                    DataWindow.Show();
+                }
+                else if (SelectedTableName.Name == "Amunicja")
+                {
+                    IEnumerable<Amunicja> Table = DataModel.Query<Amunicja>(sql_query: que);
+                    ShowData DataWindow = new ShowData(Table, 2);
+                    DataWindow.Show();
+                }
+                else if (SelectedTableName.Name == "Hurtowe")
+                {
+                    IEnumerable<Hurtowe> Table = DataModel.Query<Hurtowe>(sql_query: que);
+                    ShowData DataWindow = new ShowData(Table, 3);
+                    DataWindow.Show();
+                }
+                else if (SelectedTableName.Name == "Detaliczne")
+                {
+                    IEnumerable<Detaliczne> Table = DataModel.Query<Detaliczne>(sql_query: que);
+                    ShowData DataWindow = new ShowData(Table, 4);
+                    DataWindow.Show();
+                }
+                else if (SelectedTableName.Name == "Dostawa")
+                {
+                    IEnumerable<Dostawa> Table = DataModel.Query<Dostawa>(sql_query: que);
+                    ShowData DataWindow = new ShowData(Table, 5);
+                    DataWindow.Show();
+                }
+                else if (SelectedTableName.Name == "Kategoria")
+                {
+                    IEnumerable<Kategoria> Table = DataModel.Query<Kategoria>(sql_query: que);
+                    ShowData DataWindow = new ShowData(Table, 6);
+                    DataWindow.Show();
+                }
+                else if (SelectedTableName.Name == "Material")
+                {
+                    IEnumerable<Material> Table = DataModel.Query<Material>(sql_query: que);
+                    ShowData DataWindow = new ShowData(Table, 7);
+                    DataWindow.Show();
+                }
+                else if (SelectedTableName.Name == "Pracownik")
+                {
+                    IEnumerable<Pracownik> Table = DataModel.Query<Pracownik>(sql_query: que);
+                    ShowData DataWindow = new ShowData(Table, 8);
+                    DataWindow.Show();
+                }
+                else if (SelectedTableName.Name == "Produkcja")
+                {
+                    IEnumerable<Produkcja> Table = DataModel.Query<Produkcja>(sql_query: que);
+                    ShowData DataWindow = new ShowData(Table, 9);
+                    DataWindow.Show();
+                }
+                else if (SelectedTableName.Name == "Zamowienie")
+                {
+                    IEnumerable<Zamowienie> Table = DataModel.Query<Zamowienie>(sql_query: que);
+                    ShowData DataWindow = new ShowData(Table, 10);
+                    DataWindow.Show();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }

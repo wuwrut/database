@@ -69,8 +69,14 @@ namespace database
                 case (0):
                     if (long.TryParse(Box1.Text, out long r1) && Box2.Text.Length > 0 && Box3.Text.Length > 0 && Box4.Text.Length > 0 && int.TryParse(Box5.Text, out int r2))
                     {
-                        DataModel.CreateWorker(long.Parse(Box1.Text), Box2.Text, Box3.Text, Box4.Text, int.Parse(Box5.Text));
-                        this.Close();
+                        try
+                        {
+                            DataModel.CreateWorker(long.Parse(Box1.Text), Box2.Text, Box3.Text, Box4.Text, int.Parse(Box5.Text));
+                            this.Close();
+                        }catch(Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
                     }
                     else
                     {
@@ -103,8 +109,14 @@ namespace database
                 case (1):
                     if (Box1.Text.Length > 0 && int.TryParse(Box2.Text, out int r3) && Decimal.TryParse(Box3.Text, out Decimal r4))
                     {
-                        DataModel.CreateAmmo(Box1.Text, int.Parse(Box2.Text), Decimal.Parse(Box3.Text));
-                        this.Close();
+                        try
+                        {
+                            DataModel.CreateAmmo(Box1.Text, int.Parse(Box2.Text), Decimal.Parse(Box3.Text));
+                            this.Close();
+                        }catch(Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
                     }
                     else
                     {
@@ -127,8 +139,14 @@ namespace database
                 default:
                     if (Box1.Text.Length > 0 && Box2.Text.Length > 0 && Decimal.TryParse(Box3.Text, out Decimal r5))
                     {
-                        DataModel.CreateWeapon(Box1.Text, Box2.Text, Decimal.Parse(Box3.Text));
-                        this.Close();
+                        try
+                        {
+                            DataModel.CreateWeapon(Box1.Text, Box2.Text, Decimal.Parse(Box3.Text));
+                            this.Close();
+                        }catch(Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
                     }
                     else
                     {
