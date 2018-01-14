@@ -23,6 +23,7 @@ namespace database
         private int class_mode;
         private object sthToChange;
         private ShowData lastData;
+        private Brush _defaultBrush;
 
         public ModifyForm(object toChange, int mode, ShowData lastWindow)
         {
@@ -31,6 +32,7 @@ namespace database
             class_mode = mode;
             sthToChange = toChange;
             lastData = lastWindow;
+            _defaultBrush = Button1.BorderBrush;
 
             if (mode == 1)
             {
@@ -184,57 +186,155 @@ namespace database
             {
                 if (mode == 1)
                 {
-                    Bron typeObject = (Bron)toChange;
-                    DataModel.Execute("UPDATE Bron SET Nazwa = '" + Box2.Text + "', Cena = '" + Box3.Text.Replace(",", ".") + "', PRODUKCJA_Numer_Produkcyjny = '" + Box4.Text + "', KATEGORIA_ID = '" + Box5.Text + "' WHERE Numer_Seryjny = '" + Box1.Text + "'");
+                    if (Box2.Text.Length > 0 && Decimal.TryParse(Box3.Text, out decimal r1) && Int64.TryParse(Box4.Text, out Int64 r2) && int.TryParse(Box5.Text, out int r6))
+                    {
+                        Bron typeObject = (Bron)toChange;
+                        DataModel.Execute("UPDATE Bron SET Nazwa = '" + Box2.Text + "', Cena = '" + Box3.Text.Replace(",", ".") + "', PRODUKCJA_Numer_Produkcyjny = '" + Box4.Text + "', KATEGORIA_ID = '" + Box5.Text + "' WHERE Numer_Seryjny = '" + Box1.Text + "'");
+
+                        lastData.Close();
+                        this.Close();
+                    }
+                    else
+                    {
+                        Button1.BorderBrush = Brushes.Red;
+                    }
                 }
                 else if (mode == 2)
                 {
-                    Amunicja typeObject = (Amunicja)toChange;
-                    DataModel.Execute("UPDATE Amunicja SET Kaliber = '" + Box2.Text + "', Ilosc_Amunicji = '" + Box3.Text + "', Cena = '" + Box4.Text.Replace(",", ".") + "', PRODUKCJA_Numer_Produkcji = '" + Box5.Text + "' WHERE Numer_Pudelka = " + Box1.Text + "'");
+                    if (Box2.Text.Length > 0 && int.TryParse(Box3.Text, out int r3) && float.TryParse(Box4.Text, out float r4) && Int64.TryParse(Box5.Text, out Int64 r5))
+                    {
+                        Amunicja typeObject = (Amunicja)toChange;
+                        DataModel.Execute("UPDATE Amunicja SET Kaliber = '" + Box2.Text + "', Ilosc_Amunicji = '" + Box3.Text + "', Cena = '" + Box4.Text.Replace(",", ".") + "', PRODUKCJA_Numer_Produkcji = '" + Box5.Text + "' WHERE Numer_Pudelka = " + Box1.Text + "'");
+
+                        lastData.Close();
+                        this.Close();
+                    }
+                    else
+                    {
+                        Button1.BorderBrush = Brushes.Red;
+                    }
                 }
                 else if (mode == 3)
                 {
-                    Hurtowe typeObject = (Hurtowe)toChange;
-                    DataModel.Execute("UPDATE Hurtowe SET Zezwolenie_Na_Handel = '" + Box2.Text + "' WHERE Numer_Zamowienia = '" + Box1.Text + "'");
+                    if (Box2.Text.Length > 0)
+                    {
+                        Hurtowe typeObject = (Hurtowe)toChange;
+                        DataModel.Execute("UPDATE Hurtowe SET Zezwolenie_Na_Handel = '" + Box2.Text + "' WHERE Numer_Zamowienia = '" + Box1.Text + "'");
+
+                        lastData.Close();
+                        this.Close();
+                    }
+                    else
+                    {
+                        Button1.BorderBrush = Brushes.Red;
+                    }
+
                 }
                 else if (mode == 4)
                 {
-                    Detaliczne typeObject = (Detaliczne)toChange;
-                    DataModel.Execute("UPDATE Detaliczne SET Zezwolenie_Na_Handel = '" + Box2.Text + "' WHERE Numer_Zamowienia = '" + Box1.Text + "'");
+                    if (Box2.Text.Length > 0)
+                    {
+                        Detaliczne typeObject = (Detaliczne)toChange;
+                        DataModel.Execute("UPDATE Detaliczne SET Zezwolenie_Na_Handel = '" + Box2.Text + "' WHERE Numer_Zamowienia = '" + Box1.Text + "'");
+
+                        lastData.Close();
+                        this.Close();
+                    }
+                    else
+                    {
+                        Button1.BorderBrush = Brushes.Red;
+                    }                    
                 }
                 else if (mode == 5)
                 {
-                    Dostawa typeObject = (Dostawa)toChange;
-                    DataModel.Execute("UPDATE Dostawa SET Nazwa_dostawcy = '" + Box2.Text + "', Koszt_Calkowity = '" + Box3.Text.Replace(",", ".") + "' WHERE Nr_Dostawy = '" + Box1.Text + "'");
+                    if (Box2.Text.Length > 0 && Decimal.TryParse(Box3.Text, out Decimal r8))
+                    {
+                        Dostawa typeObject = (Dostawa)toChange;
+                        DataModel.Execute("UPDATE Dostawa SET Nazwa_dostawcy = '" + Box2.Text + "', Koszt_Calkowity = '" + Box3.Text.Replace(",", ".") + "' WHERE Nr_Dostawy = '" + Box1.Text + "'");
+
+                        lastData.Close();
+                        this.Close();
+                    }
+                    else
+                    {
+                        Button1.BorderBrush = Brushes.Red;
+                    }
                 }
                 else if (mode == 6)
                 {
-                    Kategoria typeObject = (Kategoria)toChange;
-                    DataModel.Execute("UPDATE Kategoria SET Nazwa = '" + Box2.Text + "' WHERE ID = '" + Box1.Text + "'");
+                    if (Box2.Text.Length > 0)
+                    {
+                        Kategoria typeObject = (Kategoria)toChange;
+                        DataModel.Execute("UPDATE Kategoria SET Nazwa = '" + Box2.Text + "' WHERE ID = '" + Box1.Text + "'");
+
+                        lastData.Close();
+                        this.Close();
+                    }
+                    else
+                    {
+                        Button1.BorderBrush = Brushes.Red;
+                    }
                 }
                 else if (mode == 7)
                 {
-                    Material typeObject = (Material)toChange;
-                    DataModel.Execute("UPDATE Material SET Nazwa = '" + Box2.Text + "', Ilosc = '" + Box3.Text + "' WHERE ID = '" + Box1.Text + "'");
+                    if (Box2.Text.Length > 0 && int.TryParse(Box3.Text, out int r9))
+                    {
+                        Material typeObject = (Material)toChange;
+                        DataModel.Execute("UPDATE Material SET Nazwa = '" + Box2.Text + "', Ilosc = '" + Box3.Text + "' WHERE ID = '" + Box1.Text + "'");
+
+                        lastData.Close();
+                        this.Close();
+                    }
+                    else
+                    {
+                        Button1.BorderBrush = Brushes.Red;
+                    }
                 }
                 else if (mode == 8)
                 {
-                    Pracownik typeObject = (Pracownik)toChange;
-                    DataModel.Execute("UPDATE Pracownik SET Imie = '" + Box2.Text + "', Nazwisko = '" + Box3.Text + "', Zaswiadczenie_O_Niekaralnosci = '" + Box4.Text + "' WHERE PESEL = '" + Box1.Text + "'");
+                    if (Box2.Text.Length > 0 && Box3.Text.Length > 0 && Box4.Text.Length > 0)
+                    {
+                        Pracownik typeObject = (Pracownik)toChange;
+                        DataModel.Execute("UPDATE Pracownik SET Imie = '" + Box2.Text + "', Nazwisko = '" + Box3.Text + "', Zaswiadczenie_O_Niekaralnosci = '" + Box4.Text + "' WHERE PESEL = '" + Box1.Text + "'");
+
+                        lastData.Close();
+                        this.Close();
+                    }
+                    else
+                    {
+                        Button1.BorderBrush = Brushes.Red;
+                    }
                 }
                 else if (mode == 9)
                 {
-                    Produkcja typeObject = (Produkcja)toChange;
-                    DataModel.Execute("UPDATE Produkcja SET Nazwa_Produktu = '" + Box2.Text + "', Ilosc_Produktu = '" + Box3.Text + "' WHERE Numer_Produkcyjny = '" + Box1.Text + "'");
+                    if (Box2.Text.Length > 0 && int.TryParse(Box3.Text, out int r10))
+                    {
+                        Produkcja typeObject = (Produkcja)toChange;
+                        DataModel.Execute("UPDATE Produkcja SET Nazwa_Produktu = '" + Box2.Text + "', Ilosc_Produktu = '" + Box3.Text + "' WHERE Numer_Produkcyjny = '" + Box1.Text + "'");
+
+                        lastData.Close();
+                        this.Close();
+                    }
+                    else
+                    {
+                        Button1.BorderBrush = Brushes.Red;
+                    }
                 }
                 else
                 {
-                    Zamowienie typeObject = (Zamowienie)toChange;
-                    DataModel.Execute("UPDATE Zamowienie SET Data_Dostawy = '" + Box2.Text + "', Data_Zamowienia = '" + Box3.Text + "', Uwagi = '" + Box4.Text + "' WHERE Numer_Zamowienia = '" + Box1.Text);
-                }
+                    if (DateTime.TryParse(Box2.Text, out DateTime r11) && DateTime.TryParse(Box3.Text, out DateTime r12) && int.TryParse(Box4.Text, out int r13))
+                    {
+                        Zamowienie typeObject = (Zamowienie)toChange;
+                        DataModel.Execute("UPDATE Zamowienie SET Data_Dostawy = '" + Box2.Text + "', Data_Zamowienia = '" + Box3.Text + "', Uwagi = '" + Box4.Text + "' WHERE Numer_Zamowienia = '" + Box1.Text);
 
-                lastData.Close();
-                this.Close();
+                        lastData.Close();
+                        this.Close();
+                    }
+                    else
+                    {
+                        Button1.BorderBrush = Brushes.Red;
+                    }
+                }
             }
             catch(Exception ex)
             {
