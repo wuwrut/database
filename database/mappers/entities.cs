@@ -6,24 +6,24 @@ using System.Threading.Tasks;
 
 namespace database.models
 {
-    public class Amunicja
-    {
-        public int Numer_Pudelka { get; set; }
-        public string Kaliber { get; set; }
-        public int Ilosc_Amunicji { get; set; }
-        public float Cena { get; set; }
-        public Int64 PRODUKCJA_Numer_Produkcji { get; set; }
-    }
-
     public class Bron
     {
-        public int Numer_Seryjny { get; set; }
+        public Int64 Numer_Seryjny { get; set; }
         public string Nazwa { get; set; }
         public Decimal Cena { get; set; }
         public Int64 PRODUKCJA_Numer_Produkcyjny { get; set; }
         public int KATEGORIA_ID { get; set; }
     }
 
+    public class Amunicja
+    {
+        public Int64 Numer_Pudelka { get; set; }
+        public string Kaliber { get; set; }
+        public int Ilosc_Amunicji { get; set; }
+        public float Cena { get; set; }
+        public Int64 PRODUKCJA_Numer_Produkcji { get; set; }
+    }
+    
     public class Material
     {
         public Int64 ID { get; set; }
@@ -41,7 +41,7 @@ namespace database.models
 
     public class Produkcja
     {
-        public int Numer_Produkcyjny { get; set; }
+        public Int64 Numer_Produkcyjny { get; set; }
         public string Nazwa_Produktu { get; set; }
         public int Ilosc_Produktu { get; set; }
     }

@@ -299,21 +299,17 @@ namespace database.models
             }
         }
 
-        public void Delete(string table_name, IEnumerable<int> ids)
+        public void Delete(string table_name, Int64 id)
         {
             using (SqlConnection con = new SqlConnection(con_str))
             {
                 using (SqlCommand cmd = new SqlCommand($"DELETE {table_name} WHERE ID = @id", con))
                 {
-                    cmd.Parameters.Add("@id", SqlDbType.Int).Value = -1;
+                    cmd.Parameters.Add("@id", SqlDbType.BigInt).Value = -1;
 
                     con.Open();
-
-                    foreach (var id in ids)
-                    {
-                        cmd.Parameters["@id"].Value = id;
-                        cmd.ExecuteNonQuery();
-                    }
+                    cmd.Parameters["@id"].Value = id;
+                    cmd.ExecuteNonQuery();                    
                 }
             }
         }

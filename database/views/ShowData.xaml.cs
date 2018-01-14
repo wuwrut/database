@@ -43,42 +43,62 @@ namespace database
             if (mode == 1)
             {
                 Bron obiekt = DataFromDatabase.ElementAt(selectedIndex);
+                ModifyForm mForm = new ModifyForm(obiekt, mode);
+                mForm.Show();
             }
             else if (mode == 2)
             {
                 Amunicja obiekt = DataFromDatabase.ElementAt(selectedIndex);
+                ModifyForm mForm = new ModifyForm(obiekt, mode);
+                mForm.Show();
             }
             else if (mode == 3)
             {
                 Hurtowe obiekt = DataFromDatabase.ElementAt(selectedIndex);
+                ModifyForm mForm = new ModifyForm(obiekt, mode);
+                mForm.Show();
             }
             else if (mode == 4)
             {
                 Detaliczne obiekt = DataFromDatabase.ElementAt(selectedIndex);
+                ModifyForm mForm = new ModifyForm(obiekt, mode);
+                mForm.Show();
             }
             else if (mode == 5)
             {
                 Dostawa obiekt = DataFromDatabase.ElementAt(selectedIndex);
+                ModifyForm mForm = new ModifyForm(obiekt, mode);
+                mForm.Show();
             }
             else if (mode == 6)
             {
                 Kategoria obiekt = DataFromDatabase.ElementAt(selectedIndex);
+                ModifyForm mForm = new ModifyForm(obiekt, mode);
+                mForm.Show();
             }
             else if (mode == 7)
             {
                 Material obiekt = DataFromDatabase.ElementAt(selectedIndex);
+                ModifyForm mForm = new ModifyForm(obiekt, mode);
+                mForm.Show();
             }
             else if (mode == 8)
             {
                 Pracownik obiekt = DataFromDatabase.ElementAt(selectedIndex);
+                ModifyForm mForm = new ModifyForm(obiekt, mode);
+                mForm.Show();
             }
             else if (mode == 9)
             {
                 Produkcja obiekt = DataFromDatabase.ElementAt(selectedIndex);
+                ModifyForm mForm = new ModifyForm(obiekt, mode);
+                mForm.Show();
             }
             else
             {
                 Zamowienie obiekt = DataFromDatabase.ElementAt(selectedIndex);
+                ModifyForm mForm = new ModifyForm(obiekt, mode);
+                mForm.Show();
             }
         }
     }
