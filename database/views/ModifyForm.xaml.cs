@@ -22,14 +22,15 @@ namespace database
     {
         private int class_mode;
         private object sthToChange;
+        private ShowData lastData;
 
-        public ModifyForm(object toChange, int mode)
+        public ModifyForm(object toChange, int mode, ShowData lastWindow)
         {
+
             InitializeComponent();
             class_mode = mode;
             sthToChange = toChange;
-
-            DatabaseModel DataModel = new DatabaseModel();
+            lastData = lastWindow;
 
             if (mode == 1)
             {
@@ -178,46 +179,69 @@ namespace database
             object toChange = sthToChange;
             int mode = class_mode;
 
-            if (mode == 1)
+            DatabaseModel DataModel = new DatabaseModel();
+            try
             {
-                Bron typeObject = (Bron)toChange;
+                if (mode == 1)
+                {
+                    Bron typeObject = (Bron)toChange;
+                    DataModel.Execute("UPDATE Bron SET Nazwa = '" + Box2.Text + "', Cena = '" + Box3.Text.Replace(",", ".") + "', PRODUKCJA_Numer_Produkcyjny = '" + Box4.Text + "', KATEGORIA_ID = '" + Box5.Text + "' WHERE Numer_Seryjny = '" + Box1.Text + "'");
+                }
+                else if (mode == 2)
+                {
+                    Amunicja typeObject = (Amunicja)toChange;
+                    DataModel.Execute("UPDATE Amunicja SET Kaliber = '" + Box2.Text + "', Ilosc_Amunicji = '" + Box3.Text + "', Cena = '" + Box4.Text.Replace(",", ".") + "', PRODUKCJA_Numer_Produkcji = '" + Box5.Text + "' WHERE Numer_Pudelka = " + Box1.Text + "'");
+                }
+                else if (mode == 3)
+                {
+                    Hurtowe typeObject = (Hurtowe)toChange;
+                    DataModel.Execute("UPDATE Hurtowe SET Zezwolenie_Na_Handel = '" + Box2.Text + "' WHERE Numer_Zamowienia = '" + Box1.Text + "'");
+                }
+                else if (mode == 4)
+                {
+                    Detaliczne typeObject = (Detaliczne)toChange;
+                    DataModel.Execute("UPDATE Detaliczne SET Zezwolenie_Na_Handel = '" + Box2.Text + "' WHERE Numer_Zamowienia = '" + Box1.Text + "'");
+                }
+                else if (mode == 5)
+                {
+                    Dostawa typeObject = (Dostawa)toChange;
+                    DataModel.Execute("UPDATE Dostawa SET Nazwa_dostawcy = '" + Box2.Text + "', Koszt_Calkowity = '" + Box3.Text.Replace(",", ".") + "' WHERE Nr_Dostawy = '" + Box1.Text + "'");
+                }
+                else if (mode == 6)
+                {
+                    Kategoria typeObject = (Kategoria)toChange;
+                    DataModel.Execute("UPDATE Kategoria SET Nazwa = '" + Box2.Text + "' WHERE ID = '" + Box1.Text + "'");
+                }
+                else if (mode == 7)
+                {
+                    Material typeObject = (Material)toChange;
+                    DataModel.Execute("UPDATE Material SET Nazwa = '" + Box2.Text + "', Ilosc = '" + Box3.Text + "' WHERE ID = '" + Box1.Text + "'");
+                }
+                else if (mode == 8)
+                {
+                    Pracownik typeObject = (Pracownik)toChange;
+                    DataModel.Execute("UPDATE Pracownik SET Imie = '" + Box2.Text + "', Nazwisko = '" + Box3.Text + "', Zaswiadczenie_O_Niekaralnosci = '" + Box4.Text + "' WHERE PESEL = '" + Box1.Text + "'");
+                }
+                else if (mode == 9)
+                {
+                    Produkcja typeObject = (Produkcja)toChange;
+                    DataModel.Execute("UPDATE Produkcja SET Nazwa_Produktu = '" + Box2.Text + "', Ilosc_Produktu = '" + Box3.Text + "' WHERE Numer_Produkcyjny = '" + Box1.Text + "'");
+                }
+                else
+                {
+                    Zamowienie typeObject = (Zamowienie)toChange;
+                    DataModel.Execute("UPDATE Zamowienie SET Data_Dostawy = '" + Box2.Text + "', Data_Zamowienia = '" + Box3.Text + "', Uwagi = '" + Box4.Text + "' WHERE Numer_Zamowienia = '" + Box1.Text);
+                }
+
+                lastData.Close();
+                this.Close();
             }
-            else if (mode == 2)
+            catch(Exception ex)
             {
-                Amunicja typeObject = (Amunicja)toChange;
+                MessageBox.Show(ex.Message);
             }
-            else if (mode == 3)
-            {
-                Hurtowe typeObject = (Hurtowe)toChange;
-            }
-            else if (mode == 4)
-            {
-                Detaliczne typeObject = (Detaliczne)toChange;
-            }
-            else if (mode == 5)
-            {
-                Dostawa typeObject = (Dostawa)toChange;
-            }
-            else if (mode == 6)
-            {
-                Kategoria typeObject = (Kategoria)toChange;
-            }
-            else if (mode == 7)
-            {
-                Material typeObject = (Material)toChange;
-            }
-            else if (mode == 8)
-            {
-                Pracownik typeObject = (Pracownik)toChange;
-            }
-            else if (mode == 9)
-            {
-                Produkcja typeObject = (Produkcja)toChange;
-            }
-            else
-            {
-                Zamowienie typeObject = (Zamowienie)toChange;
-            }
+
+
         }
 
         private void Button2_Click(object sender, RoutedEventArgs e)
@@ -225,45 +249,68 @@ namespace database
             object toChange = sthToChange;
             int mode = class_mode;
 
-            if (mode == 1)
+            DatabaseModel DataModel = new DatabaseModel();
+            try
             {
-                Bron typeObject = (Bron)toChange;
+                if (mode == 1)
+                {
+                    Bron typeObject = (Bron)toChange;
+                    DataModel.Execute("DELETE FROM Bron WHERE Numer_Seryjny = " + typeObject.Numer_Seryjny.ToString());
+
+                }
+                else if (mode == 2)
+                {
+                    Amunicja typeObject = (Amunicja)toChange;
+                    DataModel.Execute("DELETE FROM Amunicja WHERE Numer_Pudelka = " + typeObject.Numer_Pudelka.ToString());
+                }
+                else if (mode == 3)
+                {
+                    Hurtowe typeObject = (Hurtowe)toChange;
+                    DataModel.Execute("DELETE FROM Hurtowe WHERE Numer_Zamowienia = " + typeObject.Numer_Zamowienia.ToString());
+                }
+                else if (mode == 4)
+                {
+                    Detaliczne typeObject = (Detaliczne)toChange;
+                    DataModel.Execute("DELETE FROM Detaliczne WHERE Numer_Zamowienia = " + typeObject.Numer_Zamowienia.ToString());
+                }
+                else if (mode == 5)
+                {
+                    Dostawa typeObject = (Dostawa)toChange;
+                    DataModel.Execute("DELETE FROM Dostawa WHERE Nr_Dostawy = " + typeObject.Nr_Dostawy.ToString());
+                }
+                else if (mode == 6)
+                {
+                    Kategoria typeObject = (Kategoria)toChange;
+                    DataModel.Execute("DELETE FROM Kategoria WHERE ID = " + typeObject.ID.ToString());
+                }
+                else if (mode == 7)
+                {
+                    Material typeObject = (Material)toChange;
+                    DataModel.Execute("DELETE FROM Material WHERE ID = " + typeObject.ID.ToString());
+                }
+                else if (mode == 8)
+                {
+                    Pracownik typeObject = (Pracownik)toChange;
+                    DataModel.Execute("DELETE FROM Pracownik WHERE PESEL = " + typeObject.PESEL.ToString());
+
+                }
+                else if (mode == 9)
+                {
+                    Produkcja typeObject = (Produkcja)toChange;
+                    DataModel.Execute("DELETE FROM Produkcja WHERE Numer_Produkcyjny = " + typeObject.Numer_Produkcyjny.ToString());
+                }
+                else
+                {
+                    Zamowienie typeObject = (Zamowienie)toChange;
+                    DataModel.Execute("DELETE FROM Zamowienie WHERE Numer_Zamowienia = " + typeObject.Numer_Zamowienia.ToString());
+                }
+
+                lastData.Close();
+                this.Close();
             }
-            else if (mode == 2)
+            catch(Exception ex)
             {
-                Amunicja typeObject = (Amunicja)toChange;
-            }
-            else if (mode == 3)
-            {
-                Hurtowe typeObject = (Hurtowe)toChange;
-            }
-            else if (mode == 4)
-            {
-                Detaliczne typeObject = (Detaliczne)toChange;
-            }
-            else if (mode == 5)
-            {
-                Dostawa typeObject = (Dostawa)toChange;
-            }
-            else if (mode == 6)
-            {
-                Kategoria typeObject = (Kategoria)toChange;
-            }
-            else if (mode == 7)
-            {
-                Material typeObject = (Material)toChange;
-            }
-            else if (mode == 8)
-            {
-                Pracownik typeObject = (Pracownik)toChange;
-            }
-            else if (mode == 9)
-            {
-                Produkcja typeObject = (Produkcja)toChange;
-            }
-            else
-            {
-                Zamowienie typeObject = (Zamowienie)toChange;
+                MessageBox.Show(ex.Message);
             }
         }
 
