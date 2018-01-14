@@ -82,6 +82,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Helpers\TestItemsRefill.cs" />
     <Compile Include="views\ModifyForm.xaml.cs">
       <DependentUpon>ModifyForm.xaml</DependentUpon>
     </Compile>

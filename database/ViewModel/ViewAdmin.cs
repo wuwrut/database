@@ -26,7 +26,7 @@ namespace database.ViewModel
 
         public IList<TableNames> TableNamesFromDatabase { get; private set; }
         public IList<TableAttribute> TableAttributesFromDatabase { get; private set; }
-        public TableAttribute SelectedAttribute { get; set; }
+        public IList<String> TestItems { get; set; }
 
         public RelayCommand ShowDataCommand { get; set; }
         public RelayCommand ExecuteCommand { get; set; }
@@ -124,8 +124,20 @@ namespace database.ViewModel
                 },
             };
             this.SelectedTableName = this.TableNamesFromDatabase[0];
-            this.SelectedAttribute = this.TableAttributesFromDatabase[0];
+            this.SelectedAttribute = this.TableAttributesFromDatabase[1];
             TextSearch = "";
+            TestItems = new List<String>();
+
+            try
+            {
+                foreach (Bron b in DataModel.Query<Bron>("SELECT NAZWA FROM BRON"))
+                {
+                    TestItems.Add(b.Nazwa);
+                }
+            }catch(Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
 
             ShowDataCommand = new RelayCommand(DataCommand);
             ExecuteCommand = new RelayCommand(Execute);
@@ -148,6 +160,34 @@ namespace database.ViewModel
                     this.SelectedAttribute = this.TableAttributesFromDatabase[0];
                     RaisePropertyChanged("TableAttributesFromDatabase");
                     RaisePropertyChanged("SelectedAttribute");
+
+                    TestItemsRefill TestItemsInstance = new TestItemsRefill();
+                    TestItemsInstance.TestItemsFill(this.TestItems, SelectedTableName.Name, SelectedAttribute.Name);
+                }
+            }
+        }
+
+
+        private TableAttribute _selectedAttribute;
+        public TableAttribute SelectedAttribute
+        {
+            get
+            {
+                return _selectedAttribute;
+            }
+            set
+            {
+                if(_selectedAttribute != value)
+                {
+                    _selectedAttribute = value;
+                    RaisePropertyChanged("SelectedAttribute");
+                    if(_selectedAttribute == null && TableAttributesFromDatabase != null)
+                    {
+                        this.SelectedAttribute = this.TableAttributesFromDatabase[0];
+                    }
+
+                    TestItemsRefill TestItemsInstance = new TestItemsRefill();
+                    TestItemsInstance.TestItemsFill(this.TestItems, SelectedTableName.Name, _selectedAttribute.Name);
                 }
             }
         }
@@ -223,10 +263,11 @@ namespace database.ViewModel
         {
             String que = "SELECT * FROM " + SelectedTableName.Name;
 
+
             if (SelectedAttribute.Name.Length > 0 && TextSearch.Length > 0)
             {
 
-                que += " WHERE " + SelectedAttribute.Name + " LIKE \'%" + TextSearch + "%\' ";
+                que += " WHERE " + SelectedAttribute.Name + " LIKE \'%" + TextSearch.Replace(",", ".") + "%\' ";
             }
 
             DatabaseModel DataModel = new DatabaseModel();

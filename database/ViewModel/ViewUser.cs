@@ -32,7 +32,7 @@ namespace database.ViewModel
 
         public IList<TableNames> TableNamesFromDatabase { get; private set; }
         public IList<TableAttribute> TableAttributesFromDatabase { get; private set; }
-        public TableAttribute SelectedAttribute { get; set; }
+        public IList<String> TestItems { get; set; }
 
         public ViewUser()
         {
@@ -52,7 +52,7 @@ namespace database.ViewModel
                     {
                         new TableAttribute(){Name = ""},
                         new TableAttribute(){Name = "Kaliber"},
-                        new TableAttribute(){Name = "Ilosc_amunicji"},
+                        new TableAttribute(){Name = "Ilosc_Amunicji"},
                         new TableAttribute(){Name = "Cena"}
                     }
                 }
@@ -60,13 +60,27 @@ namespace database.ViewModel
             this.SelectedTableName = this.TableNamesFromDatabase[0];
             this.SelectedAttribute = this.TableAttributesFromDatabase[0];
             TextSearch = "";
+            TestItems = new List<String>();
+
+            try
+            {
+                DatabaseModel DataModel = new DatabaseModel();
+
+                foreach (Bron b in DataModel.Query<Bron>("SELECT NAZWA FROM BRON"))
+                {
+                    TestItems.Add(b.Nazwa);
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
 
             ShowDataCommand = new RelayCommand(DataCommand);
 
             ListOrders = new RelayCommand(ListUserOrders);
             AddNewOrder = new RelayCommand(AddNewUserOrder);            
         }
-
 
         private TableNames _selectedTableName;
         public TableNames SelectedTableName
@@ -84,6 +98,35 @@ namespace database.ViewModel
                     this.TableAttributesFromDatabase = _selectedTableName.TableAttributes;
                     this.SelectedAttribute = this.TableAttributesFromDatabase[0];
                     RaisePropertyChanged("TableAttributesFromDatabase");
+                    RaisePropertyChanged("SelectedAttribute");
+
+                    TestItemsRefill TestItemsInstance = new TestItemsRefill();
+                    TestItemsInstance.TestItemsFill(this.TestItems, SelectedTableName.Name, SelectedAttribute.Name);
+                }
+            }
+        }
+
+
+        private TableAttribute _selectedAttribute;
+        public TableAttribute SelectedAttribute
+        {
+            get
+            {
+                return _selectedAttribute;
+            }
+            set
+            {
+                if (_selectedAttribute != value)
+                {
+                    _selectedAttribute = value;
+                    RaisePropertyChanged("SelectedAttribute");
+                    if (_selectedAttribute == null && TableAttributesFromDatabase != null)
+                    {
+                        this.SelectedAttribute = this.TableAttributesFromDatabase[0];
+                    }
+
+                    TestItemsRefill TestItemsInstance = new TestItemsRefill();
+                    TestItemsInstance.TestItemsFill(this.TestItems, SelectedTableName.Name, _selectedAttribute.Name);
                 }
             }
         }
@@ -112,7 +155,7 @@ namespace database.ViewModel
             if(SelectedAttribute.Name.Length > 0 && TextSearch.Length > 0)
             {
                 
-                que += " WHERE " + SelectedAttribute.Name + " LIKE \'%" + TextSearch + "%\' ";
+                que += " WHERE " + SelectedAttribute.Name + " LIKE \'%" + TextSearch.Replace(",", ".") + "%\' ";
             }
 
             DatabaseModel DataModel = new DatabaseModel();

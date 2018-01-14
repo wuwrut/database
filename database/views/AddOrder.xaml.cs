@@ -125,8 +125,6 @@ namespace database
             this.Close();
         }
 
-
-        //NOT WORKING??
         private void BoxQuantity_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (int.TryParse(BoxQuantity.Text, out int result))

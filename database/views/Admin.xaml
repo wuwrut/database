@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:behaviors="clr-namespace:WPFTextBoxAutoComplete;assembly=WPFTextBoxAutoComplete"
         xmlns:vm="clr-namespace:database.ViewModel"
         mc:Ignorable="d"
         Title="Admin"  Height="320" Width="400">
@@ -13,12 +14,18 @@
         <TabControl HorizontalAlignment="Left" Height="272" VerticalAlignment="Top" Width="375">
             <TabItem Header="Find &amp; Modify">
                 <Grid>
-                    <ComboBox Name="Pick_Category" ItemsSource="{Binding TableNamesFromDatabase}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedTableName}" Margin="196,25,21,0" Height="28" VerticalAlignment="Top"/>
+                    <ComboBox Name="Pick_Category" ItemsSource="{Binding TableNamesFromDatabase}" Margin="196,25,21,0" Height="28" 
+                              DisplayMemberPath="Name" SelectedItem="{Binding SelectedTableName}" VerticalAlignment="Top"/>
                     <Label Content="Table" Margin="26,25,206,0" Height="28" VerticalAlignment="Top"/>
                     <Button Content="Find" Command="{Binding ShowDataCommand}" Margin="196,175,21,0" Height="29" VerticalAlignment="Top"/>
-                    <TextBox VerticalContentAlignment="Center" Text="{Binding TextSearch, UpdateSourceTrigger=PropertyChanged}" FontSize="14" Margin="196,125,21,0" TextWrapping="Wrap" Height="28" VerticalAlignment="Top"/>
+                    <TextBox VerticalContentAlignment="Center" Text="{Binding TextSearch, UpdateSourceTrigger=PropertyChanged}" 
+                             behaviors:AutoCompleteBehavior.AutoCompleteItemsSource="{Binding TestItems}"  
+                             behaviors:AutoCompleteBehavior.AutoCompleteStringComparison="InvariantCultureIgnoreCase"
+                             FontSize="14" Margin="196,125,21,0" TextWrapping="Wrap" Height="28" VerticalAlignment="Top"/>
                     <Label Content="Search phrase" Margin="26,125,206,0" Height="28" VerticalAlignment="Top"/>
-                    <ComboBox x:Name="Pick_Attribute"  ItemsSource="{Binding SelectedTableName.TableAttributes}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedAttribute}" Margin="196,75,21,0" Height="28" VerticalAlignment="Top"/>
+                    <ComboBox x:Name="Pick_Attribute"  ItemsSource="{Binding SelectedTableName.TableAttributes}" 
+                              DisplayMemberPath="Name" SelectedItem="{Binding SelectedAttribute}" 
+                              Margin="196,75,21,0" Height="28" VerticalAlignment="Top"/>
                     <Label Content="Attribute" Margin="26,75,206,0" Height="28" VerticalAlignment="Top"/>
                 </Grid>
             </TabItem>

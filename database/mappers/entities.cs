@@ -70,7 +70,7 @@ namespace database.models
     {
         public Int64 Nr_Dostawy { get; set; }
         public string Nazwa_dostawcy { get; set; }
-        Decimal Koszt_Calkowity { get; set; }
+        public Decimal Koszt_Calkowity { get; set; }
     }
 
     public class Kategoria
