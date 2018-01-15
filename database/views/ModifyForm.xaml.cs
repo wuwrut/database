@@ -204,7 +204,7 @@ namespace database
                     if (Box2.Text.Length > 0 && int.TryParse(Box3.Text, out int r3) && float.TryParse(Box4.Text, out float r4))
                     {
                         Amunicja typeObject = (Amunicja)toChange;
-                        DataModel.Execute("UPDATE Amunicja SET Kaliber = '" + Box2.Text + "', Ilosc_Amunicji = '" + Box3.Text + "', Cena = '" + Box4.Text.Replace(",", ".") +  "' WHERE Numer_Pudelka = " + Box1.Text + "'");
+                        DataModel.Execute("UPDATE Amunicja SET Kaliber = '" + Box2.Text + "', Ilosc_Amunicji = '" + Box3.Text + "', Cena = '" + Box4.Text.Replace(",", ".") +  "' WHERE Numer_Pudelka = '" + Box1.Text + "'");
 
                         lastData.Close();
                         this.Close();
