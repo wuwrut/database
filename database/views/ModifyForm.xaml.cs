@@ -40,13 +40,13 @@ namespace database
                 Label1.Content = "Numer_Seryjny";
                 Label2.Content = "Nazwa";
                 Label3.Content = "Cena";
-                Label4.Content = "PRODUKCJA_Numer_Produkcyjny";
-                Label5.Content = "KATEGORIA_ID";
+                Label4.Visibility = Visibility.Hidden;
+                Label5.Visibility = Visibility.Hidden;
                 Box1.Text = typeObject.Numer_Seryjny.ToString();
                 Box2.Text = typeObject.Nazwa.ToString();
                 Box3.Text = typeObject.Cena.ToString();
-                Box4.Text = typeObject.PRODUKCJA_Numer_Produkcyjny.ToString();
-                Box5.Text = typeObject.KATEGORIA_ID.ToString();
+                Box4.Visibility = Visibility.Hidden;
+                Box5.Visibility = Visibility.Hidden;
             }
             else if (mode == 2)
             {
@@ -55,12 +55,12 @@ namespace database
                 Label2.Content = "Kaliber";
                 Label3.Content = "Ilosc_Amunicji";
                 Label4.Content = "Cena";
-                Label5.Content = "PRODUKCJA_Numer_Produkcji";
+                Label5.Visibility = Visibility.Hidden;
                 Box1.Text = typeObject.Numer_Pudelka.ToString();
                 Box2.Text = typeObject.Kaliber.ToString();
                 Box3.Text = typeObject.Ilosc_Amunicji.ToString();
                 Box4.Text = typeObject.Cena.ToString();
-                Box5.Text = typeObject.PRODUKCJA_Numer_Produkcji.ToString();
+                Box5.Visibility = Visibility.Hidden;
             }
             else if (mode == 3)
             {
@@ -186,10 +186,10 @@ namespace database
             {
                 if (mode == 1)
                 {
-                    if (Box2.Text.Length > 0 && Decimal.TryParse(Box3.Text, out decimal r1) && Int64.TryParse(Box4.Text, out Int64 r2) && int.TryParse(Box5.Text, out int r6))
+                    if (Box2.Text.Length > 0 && Decimal.TryParse(Box3.Text, out decimal r1))
                     {
                         Bron typeObject = (Bron)toChange;
-                        DataModel.Execute("UPDATE Bron SET Nazwa = '" + Box2.Text + "', Cena = '" + Box3.Text.Replace(",", ".") + "', PRODUKCJA_Numer_Produkcyjny = '" + Box4.Text + "', KATEGORIA_ID = '" + Box5.Text + "' WHERE Numer_Seryjny = '" + Box1.Text + "'");
+                        DataModel.Execute("UPDATE Bron SET Nazwa = '" + Box2.Text + "', Cena = '" + Box3.Text.Replace(",", ".") + "' WHERE Numer_Seryjny = '" + Box1.Text + "'");
 
                         lastData.Close();
                         this.Close();
@@ -201,10 +201,10 @@ namespace database
                 }
                 else if (mode == 2)
                 {
-                    if (Box2.Text.Length > 0 && int.TryParse(Box3.Text, out int r3) && float.TryParse(Box4.Text, out float r4) && Int64.TryParse(Box5.Text, out Int64 r5))
+                    if (Box2.Text.Length > 0 && int.TryParse(Box3.Text, out int r3) && float.TryParse(Box4.Text, out float r4))
                     {
                         Amunicja typeObject = (Amunicja)toChange;
-                        DataModel.Execute("UPDATE Amunicja SET Kaliber = '" + Box2.Text + "', Ilosc_Amunicji = '" + Box3.Text + "', Cena = '" + Box4.Text.Replace(",", ".") + "', PRODUKCJA_Numer_Produkcji = '" + Box5.Text + "' WHERE Numer_Pudelka = " + Box1.Text + "'");
+                        DataModel.Execute("UPDATE Amunicja SET Kaliber = '" + Box2.Text + "', Ilosc_Amunicji = '" + Box3.Text + "', Cena = '" + Box4.Text.Replace(",", ".") +  "' WHERE Numer_Pudelka = " + Box1.Text + "'");
 
                         lastData.Close();
                         this.Close();
