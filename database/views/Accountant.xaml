@@ -30,13 +30,19 @@
             <TabItem Header="New Data">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="61*"/>
-                        <ColumnDefinition Width="81*"/>
-                        <ColumnDefinition Width="54*"/>
+                        <ColumnDefinition Width="19*"/>
+                        <ColumnDefinition Width="148*"/>
+                        <ColumnDefinition Width="184*"/>
+                        <ColumnDefinition Width="18*"/>
                     </Grid.ColumnDefinitions>
                     <Button Content="Hire Worker" Command="{Binding AddWorkerCommand}" Margin="15,27,30,0" VerticalAlignment="Top" Height="33" Grid.Column="1"/>
                     <Button Content="New Gun" Command="{Binding AddWeaponCommand}" Margin="15,100,30,0" VerticalAlignment="Top" Height="33" RenderTransformOrigin="2.117,2.697" Grid.Column="1"/>
                     <Button Content="New Ammo" Command="{Binding AddAmmoCommand}" Margin="15,172,30,0" VerticalAlignment="Top" Height="33" Grid.Column="1"/>
+                    <Button Content="Hire Worker" Command="{Binding AddWorkerCommand}" Margin="15,27,30,0" VerticalAlignment="Top" Height="33" Grid.Column="1"/>
+
+                    <Button Content="List Workers" Command="{Binding ListWorkersCommand}" Margin="61,27,37,0" VerticalAlignment="Top" Height="33" Grid.Column="2"/>
+                    <Button Content="List Guns" Command="{Binding ListGunsCommand}" Margin="61,100,37,0" VerticalAlignment="Top" Height="33" Grid.Column="2"/>
+                    <Button Content="List Ammo" Command="{Binding ListAmmoCommand}" Margin="61,172,37,0" VerticalAlignment="Top" Height="33" Grid.Column="2" RenderTransformOrigin="0.468,3.758"/>
 
 
                 </Grid>

@@ -33,6 +33,9 @@ namespace database.ViewModel
         public RelayCommand AddWorkerCommand { get; set; }
         public RelayCommand AddWeaponCommand { get; set; }
         public RelayCommand AddAmmoCommand { get; set; }
+        public RelayCommand ListWorkersCommand { get; set; }
+        public RelayCommand ListGunsCommand { get; set; }
+        public RelayCommand ListAmmoCommand { get; set; }
 
         public ViewAccountant()
         {
@@ -40,6 +43,9 @@ namespace database.ViewModel
             AddWorkerCommand = new RelayCommand(AddWorker);
             AddWeaponCommand = new RelayCommand(AddWeapon);
             AddAmmoCommand = new RelayCommand(AddAmmo);
+            ListWorkersCommand = new RelayCommand(ListWorkers);
+            ListGunsCommand = new RelayCommand(ListGuns);
+            ListAmmoCommand = new RelayCommand(ListAmmo);
 
             this.TableNamesFromDatabase = new List<TableNames>()
             {
@@ -235,6 +241,54 @@ namespace database.ViewModel
         {
             AccountantForm AForm = new AccountantForm(2);
             AForm.Show();
+        }
+
+        void ListWorkers(object parameter)
+        {
+            DatabaseModel DataModel = new DatabaseModel();
+
+            try
+            {
+                IEnumerable<Pracownik> Table = DataModel.Query<Pracownik>("SELECT * FROM Pracownik");
+                ShowData DataWindow = new ShowData(Table, 0);
+                DataWindow.Show();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+        }
+
+        void ListAmmo(object parameter)
+        {
+            DatabaseModel DataModel = new DatabaseModel();
+
+            try
+            {
+                IEnumerable<Amunicja> Table = DataModel.Query<Amunicja>("SELECT * FROM Amunicja");
+                ShowData DataWindow = new ShowData(Table, 0);
+                DataWindow.Show();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+        }
+
+        void ListGuns(object parameter)
+        {
+            DatabaseModel DataModel = new DatabaseModel();
+
+            try
+            {
+                IEnumerable<Bron> Table = DataModel.Query<Bron>("SELECT * FROM Bron");
+                ShowData DataWindow = new ShowData(Table, 0);
+                DataWindow.Show();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
         }
     }
 }
