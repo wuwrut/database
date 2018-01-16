@@ -14,8 +14,12 @@
         <TabControl Margin="0,0,10,10">
             <TabItem Header="File New">
                 <Grid>
-                    <Button Content="Add Order" Command="{Binding AddNewOrder}"  Margin="124,58,123,0" Height="40" VerticalAlignment="Top"/>
-                    <Button Content="List Orders" Command="{Binding ListOrders}"  Margin="124,154,123,0" Height="39" VerticalAlignment="Top"/>
+
+                    <Button Content="Add Order" Command="{Binding AddNewOrder}"  Margin="72,37,79,0" Height="40" VerticalAlignment="Top"/>
+                    <Button Content="List Orders" Command="{Binding ListOrders}"  Margin="72,102,79,0" Height="39" VerticalAlignment="Top"/>
+                    <Button Content="List Guns" Command="{Binding ListGunsCommand}" Margin="219,167,79,0" VerticalAlignment="Top" Height="40"/>
+                    <Button Content="List Ammo" Command="{Binding ListAmmoCommand}" Margin="72,168,226,0" VerticalAlignment="Top" Height="39" RenderTransformOrigin="0.468,3.758"/>
+
                 </Grid>
             </TabItem>
             <TabItem Header="Find">

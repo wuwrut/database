@@ -29,6 +29,8 @@ namespace database.ViewModel
         public RelayCommand ShowDataCommand { get; set; }
         public RelayCommand AddNewOrder { get; set; }
         public RelayCommand ListOrders { get; set; }
+        public RelayCommand ListGunsCommand { get; set; }
+        public RelayCommand ListAmmoCommand { get; set; }
 
         public IList<TableNames> TableNamesFromDatabase { get; private set; }
         public IList<TableAttribute> TableAttributesFromDatabase { get; private set; }
@@ -77,6 +79,9 @@ namespace database.ViewModel
             }
 
             ShowDataCommand = new RelayCommand(DataCommand);
+
+            ListGunsCommand = new RelayCommand(ListGuns);
+            ListAmmoCommand = new RelayCommand(ListAmmo);
 
             ListOrders = new RelayCommand(ListUserOrders);
             AddNewOrder = new RelayCommand(AddNewUserOrder);            
@@ -200,6 +205,38 @@ namespace database.ViewModel
         {
             AddOrder newOrder = new AddOrder();
             newOrder.Show();
+        }
+
+        void ListAmmo(object parameter)
+        {
+            DatabaseModel DataModel = new DatabaseModel();
+
+            try
+            {
+                IEnumerable<User_Ammo> Table = DataModel.Query<User_Ammo>("SELECT * FROM AMUNICJA_W_MAGAZYNIE");
+                ShowData DataWindow = new ShowData(Table, 0);
+                DataWindow.Show();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+        }
+
+        void ListGuns(object parameter)
+        {
+            DatabaseModel DataModel = new DatabaseModel();
+
+            try
+            {
+                IEnumerable<User_Bron> Table = DataModel.Query<User_Bron>("SELECT * FROM BRON_W_MAGAZYNIE");
+                ShowData DataWindow = new ShowData(Table, 0);
+                DataWindow.Show();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
         }
     }
 }

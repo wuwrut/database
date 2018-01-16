@@ -33,7 +33,7 @@
 
         <CheckBox Name="RadioButton" Content="Retail" HorizontalAlignment="Left" Margin="44,255,0,0" VerticalAlignment="Top" Height="28" Width="72" RenderTransformOrigin="0.569,1.571"/>
         <Label Content="Weapon Permission Number" HorizontalAlignment="Left" Margin="167,229,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="WPNumber" Margin="167,255,25,0" TextWrapping="Wrap" VerticalContentAlignment="Center" Height="28" VerticalAlignment="Top"/>
+        <TextBox Name="WPNumber" Margin="167,255,25,0" TextWrapping="Wrap" VerticalContentAlignment="Center" Height="28" VerticalAlignment="Top" TextChanged="WPNumber_TextChanged"/>
 
         <Label Content="Arrival Date" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="44,302,0,0" RenderTransformOrigin="1.167,-1.077"/>
         <DatePicker Name="DatePicker" Margin="168,302,25,0" VerticalAlignment="Top" Height="29" SelectedDateChanged="DatePicker_DateChanged"/>
