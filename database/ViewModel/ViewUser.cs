@@ -38,22 +38,22 @@ namespace database.ViewModel
         {
             this.TableNamesFromDatabase = new List<TableNames>()
             {
-                new TableNames(){Name="Bron",
+                new TableNames(){Name="BRON_W_MAGAZYNIE",
                     TableAttributes = new List<TableAttribute>()
                     {
-                        new TableAttribute(){Name = ""},
-                        new TableAttribute(){Name = "Nazwa"},
-                        new TableAttribute(){Name = "Cena"}
+                        new TableAttribute(){Name = "Nazwa_Broni"},
+                        new TableAttribute(){Name = "Cena"},
+                        new TableAttribute(){Name = "Kategoria"},
+
                     }
                 },
 
-                new TableNames(){Name="Amunicja",
+                new TableNames(){Name="AMUNICJA_W_MAGAZYNIE",
                     TableAttributes = new List<TableAttribute>()
                     {
-                        new TableAttribute(){Name = ""},
-                        new TableAttribute(){Name = "Kaliber"},
-                        new TableAttribute(){Name = "Ilosc_Amunicji"},
-                        new TableAttribute(){Name = "Cena"}
+                        new TableAttribute(){Name = "Nazwa"},
+                        new TableAttribute(){Name = "Cena"},
+                        new TableAttribute(){Name = "Sztuk_w_pudelku"},
                     }
                 }
             };
@@ -66,7 +66,7 @@ namespace database.ViewModel
             {
                 DatabaseModel DataModel = new DatabaseModel();
 
-                foreach (Bron b in DataModel.Query<Bron>("SELECT NAZWA FROM BRON"))
+                foreach (Bron b in DataModel.Query<Bron>("SELECT Nazwa_Broni FROM BRON_W_MAGAZYNIE"))
                 {
                     TestItems.Add(b.Nazwa);
                 }
@@ -161,15 +161,15 @@ namespace database.ViewModel
             DatabaseModel DataModel = new DatabaseModel();
             try
             {
-                if (SelectedTableName.Name == "Bron")
+                if (SelectedTableName.Name == "BRON_W_MAGAZYNIE")
                 {
-                    IEnumerable<Bron> Table = DataModel.Query<Bron>(sql_query: que);
+                    IEnumerable<User_Bron> Table = DataModel.Query<User_Bron>(sql_query: que);
                     ShowData DataWindow = new ShowData(Table, 0);
                     DataWindow.Show();
                 }
                 else
                 {
-                    IEnumerable<Amunicja> Table = DataModel.Query<Amunicja>(sql_query: que);
+                    IEnumerable<User_Ammo> Table = DataModel.Query<User_Ammo>(sql_query: que);
                     ShowData DataWindow = new ShowData(Table, 0);
                     DataWindow.Show();
                 }

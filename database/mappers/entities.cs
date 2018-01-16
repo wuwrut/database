@@ -78,4 +78,18 @@ namespace database.models
         public Int64 ID { get; set; }
         public string Nazwa { get; set; }
     }
+
+    public class User_Bron
+    {
+        public string Nazwa_Broni { get; set; }
+        public Decimal Cena { get; set; }
+        public string Kategoria { get; set; }
+    }
+
+    public class User_Ammo
+    {
+        public string Nazwa { get; set; }
+        public Decimal Cena { get; set; }
+        public int Sztuk_w_pudelku { get; set; }
+    }
 }

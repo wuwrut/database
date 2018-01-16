@@ -293,6 +293,56 @@ namespace database.Helpers
                                 break;
                         }
                         break;
+                    case ("BRON_W_MAGAZYNIE"):
+                        switch (attrName)
+                        {
+                            case ("Nazwa_Broni"):
+                                foreach (User_Bron b in DataModel.Query<User_Bron>("SELECT " + attrName + " FROM " + tableName))
+                                {
+                                    testItems.Add(b.Nazwa_Broni.ToString());
+                                }
+                                break;
+                            case ("Cena"):
+                                foreach (User_Bron b in DataModel.Query<User_Bron>("SELECT " + attrName + " FROM " + tableName))
+                                {
+                                    testItems.Add(b.Cena.ToString());
+                                }
+                                break;
+                            case ("Kategoria"):
+                                foreach (User_Bron b in DataModel.Query<User_Bron>("SELECT " + attrName + " FROM " + tableName))
+                                {
+                                    testItems.Add(b.Kategoria.ToString());
+                                }
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                    case ("AMUNICJA_W_MAGAZYNIE"):
+                        switch (attrName)
+                        {
+                            case ("Nazwa"):
+                                foreach (User_Ammo b in DataModel.Query<User_Ammo>("SELECT " + attrName + " FROM " + tableName))
+                                {
+                                    testItems.Add(b.Nazwa.ToString());
+                                }
+                                break;
+                            case ("Cena"):
+                                foreach (User_Ammo b in DataModel.Query<User_Ammo>("SELECT " + attrName + " FROM " + tableName))
+                                {
+                                    testItems.Add(b.Cena.ToString());
+                                }
+                                break;
+                            case ("Sztuk_w_pudelku"):
+                                foreach (User_Ammo b in DataModel.Query<User_Ammo>("SELECT " + attrName + " FROM " + tableName))
+                                {
+                                    testItems.Add(b.Sztuk_w_pudelku.ToString());
+                                }
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
                     default:
                         break;                        
                 }
