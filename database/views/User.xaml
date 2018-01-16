@@ -15,7 +15,7 @@
             <TabItem Header="File New">
                 <Grid>
                     <Button Content="Add Order" Command="{Binding AddNewOrder}"  Margin="124,58,123,0" Height="40" VerticalAlignment="Top"/>
-                    <Button Content="List Your Orders" Command="{Binding ListOrders}"  Margin="124,154,123,0" Height="39" VerticalAlignment="Top"/>
+                    <Button Content="List Orders" Command="{Binding ListOrders}"  Margin="124,154,123,0" Height="39" VerticalAlignment="Top"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Find">

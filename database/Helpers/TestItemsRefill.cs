@@ -19,6 +19,8 @@ namespace database.Helpers
                 testItems = new List<String>();
             }
 
+            testItems.Clear();
+
             //IList<String> testItems = new List<String>();
 
             try

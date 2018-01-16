@@ -66,9 +66,9 @@ namespace database.ViewModel
             {
                 DatabaseModel DataModel = new DatabaseModel();
 
-                foreach (Bron b in DataModel.Query<Bron>("SELECT Nazwa_Broni FROM BRON_W_MAGAZYNIE"))
+                foreach (User_Bron b in DataModel.Query<User_Bron>("SELECT Nazwa_Broni FROM BRON_W_MAGAZYNIE"))
                 {
-                    TestItems.Add(b.Nazwa);
+                    TestItems.Add(b.Nazwa_Broni);
                 }
             }
             catch (Exception e)
