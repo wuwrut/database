@@ -62,7 +62,7 @@ namespace database
 
         private void Button1_Click(object sender, RoutedEventArgs e)
         {
-            DatabaseModel DataModel = new DatabaseModel();
+
 
             switch (formMode)
             {
@@ -71,6 +71,7 @@ namespace database
                     {
                         try
                         {
+                            DatabaseModel DataModel = new DatabaseModel();
                             DataModel.CreateWorker(long.Parse(Box1.Text), Box2.Text, Box3.Text, Box4.Text, int.Parse(Box5.Text));
                             this.Close();
                         }catch(Exception ex)
@@ -111,6 +112,7 @@ namespace database
                     {
                         try
                         {
+                            DatabaseModel DataModel = new DatabaseModel();
                             DataModel.CreateAmmo(Box1.Text, int.Parse(Box2.Text), Decimal.Parse(Box3.Text));
                             this.Close();
                         }catch(Exception ex)
@@ -141,6 +143,7 @@ namespace database
                     {
                         try
                         {
+                            DatabaseModel DataModel = new DatabaseModel();
                             DataModel.CreateWeapon(Box1.Text, Box2.Text, Decimal.Parse(Box3.Text));
                             this.Close();
                         }catch(Exception ex)
