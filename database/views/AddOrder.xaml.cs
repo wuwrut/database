@@ -27,6 +27,7 @@ namespace database
         private Brush _defaultBrush;
         private List<String> subBron = new List<String>();
         private List<String> subAmunicja = new List<String>();
+        private bool OrderEmpty = true;
 
         public AddOrder()
         {
@@ -92,14 +93,21 @@ namespace database
 
                 BoxAdded.AppendText(ComboSubtype.SelectedItem.ToString() + " x" + BoxQuantity.Text);
                 BoxAdded.AppendText(Environment.NewLine);
+                OrderEmpty = false;
+                AddButton.BorderBrush = _defaultBrush;
             }
         }
 
         private void AddNewOrder_Click(object sender, RoutedEventArgs e)
         {
-            if (DatePicker.SelectedDate < DateTime.Today.AddDays(4))
+            if (DatePicker.SelectedDate < DateTime.Today.AddDays(4) || OrderEmpty || WPNumber.Text.Length < 1)
             {
-                AddNewOrder.BorderBrush = Brushes.Red;
+                if (DatePicker.SelectedDate < DateTime.Today.AddDays(4))
+                    AddNewOrder.BorderBrush = Brushes.Red;
+                if (OrderEmpty)
+                    AddButton.BorderBrush = Brushes.Red;
+                if (WPNumber.Text.Length < 1)
+                    WPNumber.BorderBrush = Brushes.Red;
             }
             else
             {
@@ -121,8 +129,9 @@ namespace database
                 {
                     DataModel.CreateOrder(DatePicker.SelectedDate.Value, ammo, weapons, WPNumber.Text.ToString(), false);
                 }
+                this.Close();
             }
-            this.Close();
+            
         }
 
         private void BoxQuantity_TextChanged(object sender, TextChangedEventArgs e)
@@ -159,6 +168,12 @@ namespace database
             {
                 ComboSubtype.ItemsSource = subAmunicja;
             }
+        }
+
+        private void WPNumber_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (WPNumber.Text.Length >= 1)
+                WPNumber.BorderBrush = _defaultBrush;
         }
     }
 }
