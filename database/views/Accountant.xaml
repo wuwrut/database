@@ -47,6 +47,14 @@
 
                 </Grid>
             </TabItem>
+            <TabItem Header="Calculate">
+                <Grid>
+                    <TextBox HorizontalAlignment="Left" IsReadOnly="True" Text="{Binding TextAmmo, UpdateSourceTrigger=PropertyChanged}"  Height="23" Margin="41,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.508,2"/>
+                    <Label Content="Total Ammo" HorizontalAlignment="Left" Margin="41,19,0,0" VerticalAlignment="Top"/>
+                    <Button Content="Get Total Ammo" Command="{Binding GetAmmoCommand}" Margin="221,45,33,176"/>
+                </Grid>
+            </TabItem>
+
 
         </TabControl>
     </Grid>

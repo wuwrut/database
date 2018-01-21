@@ -36,6 +36,7 @@ namespace database.ViewModel
         public RelayCommand ListWorkersCommand { get; set; }
         public RelayCommand ListGunsCommand { get; set; }
         public RelayCommand ListAmmoCommand { get; set; }
+        public RelayCommand GetAmmoCommand { get; set; }
 
         public ViewAccountant()
         {
@@ -46,6 +47,7 @@ namespace database.ViewModel
             ListWorkersCommand = new RelayCommand(ListWorkers);
             ListGunsCommand = new RelayCommand(ListGuns);
             ListAmmoCommand = new RelayCommand(ListAmmo);
+            GetAmmoCommand = new RelayCommand(GetAmmo);
 
             this.TableNamesFromDatabase = new List<TableNames>()
             {
@@ -83,6 +85,7 @@ namespace database.ViewModel
             this.SelectedTableName = this.TableNamesFromDatabase[0];
             this.SelectedAttribute = this.TableAttributesFromDatabase[0];
             TextSearch = "";
+            TextAmmo = "Jajeczko";
             TestItems = new List<String>();
 
             try
@@ -225,6 +228,23 @@ namespace database.ViewModel
             }
         }
 
+        string _textAmmo;
+        public string TextAmmo
+        {
+            get
+            {
+                return _textAmmo;
+            }
+            set
+            {
+                if (_textAmmo != value)
+                {
+                    _textAmmo = value;
+                    RaisePropertyChanged("TextAmmo");
+                }
+            }
+        }
+
         void AddWorker(object parameter)
         {
             AccountantForm AForm = new AccountantForm(0);
@@ -284,6 +304,21 @@ namespace database.ViewModel
                 IEnumerable<Bron> Table = DataModel.Query<Bron>("SELECT * FROM Bron");
                 ShowData DataWindow = new ShowData(Table, 0);
                 DataWindow.Show();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+        }
+
+        void GetAmmo(object parameter)
+        {
+            DatabaseModel DataModel = new DatabaseModel();
+
+            try
+            {
+                //TextAmmo = DataModel.TotalAmmoCount().ToString();
+                MessageBox.Show(DataModel.TotalAmmoCount().ToString());             
             }
             catch (Exception e)
             {
