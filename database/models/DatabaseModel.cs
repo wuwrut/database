@@ -226,7 +226,7 @@ namespace database.models
 
             using (SqlConnection con = new SqlConnection(con_str))
             {
-                using (SqlCommand cmd = new SqlCommand("OrderValue", con))
+                using (SqlCommand cmd = new SqlCommand("SELECT dbo.OrderValue(@id)", con))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@id", SqlDbType.BigInt).Value = id;
