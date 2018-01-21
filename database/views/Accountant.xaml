@@ -49,9 +49,12 @@
             </TabItem>
             <TabItem Header="Calculate">
                 <Grid>
-                    <TextBox HorizontalAlignment="Left" IsReadOnly="True" Text="{Binding TextAmmo, UpdateSourceTrigger=PropertyChanged}"  Height="23" Margin="41,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.508,2"/>
-                    <Label Content="Total Ammo" HorizontalAlignment="Left" Margin="41,19,0,0" VerticalAlignment="Top"/>
+                    <TextBox HorizontalAlignment="Left" IsReadOnly="True" Text="{Binding TextAmmo, UpdateSourceTrigger=PropertyChanged}"  Height="23" Margin="32,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133" RenderTransformOrigin="0.508,2"/>
+                    <Label Content="Total Ammo" HorizontalAlignment="Left" Margin="32,19,0,0" VerticalAlignment="Top"/>
                     <Button Content="Get Total Ammo" Command="{Binding GetAmmoCommand}" Margin="221,45,33,176"/>
+                    <TextBox HorizontalAlignment="Left" IsReadOnly="True" Text="{Binding TextOutcome, UpdateSourceTrigger=PropertyChanged}"  Height="23" Margin="32,117,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133" RenderTransformOrigin="0.508,2"/>
+                    <Label Content="Total Outcome" HorizontalAlignment="Left" Margin="32,91,0,0" VerticalAlignment="Top"/>
+                    <Button Content="Get Total Outcome" Command="{Binding GetOutcomeCommand}" Margin="221,117,33,104"/>
                 </Grid>
             </TabItem>
 

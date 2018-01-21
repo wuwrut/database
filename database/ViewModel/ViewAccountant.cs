@@ -37,6 +37,7 @@ namespace database.ViewModel
         public RelayCommand ListGunsCommand { get; set; }
         public RelayCommand ListAmmoCommand { get; set; }
         public RelayCommand GetAmmoCommand { get; set; }
+        public RelayCommand GetOutcomeCommand { get; set; }
 
         public ViewAccountant()
         {
@@ -48,6 +49,7 @@ namespace database.ViewModel
             ListGunsCommand = new RelayCommand(ListGuns);
             ListAmmoCommand = new RelayCommand(ListAmmo);
             GetAmmoCommand = new RelayCommand(GetAmmo);
+            GetOutcomeCommand = new RelayCommand(GetOutcome);
 
             this.TableNamesFromDatabase = new List<TableNames>()
             {
@@ -85,7 +87,8 @@ namespace database.ViewModel
             this.SelectedTableName = this.TableNamesFromDatabase[0];
             this.SelectedAttribute = this.TableAttributesFromDatabase[0];
             TextSearch = "";
-            TextAmmo = "Jajeczko";
+            TextAmmo = "";
+            TextOutcome = "";
             TestItems = new List<String>();
 
             try
@@ -317,8 +320,21 @@ namespace database.ViewModel
 
             try
             {
-                //TextAmmo = DataModel.TotalAmmoCount().ToString();
-                MessageBox.Show(DataModel.TotalAmmoCount().ToString());             
+                TextAmmo = DataModel.TotalAmmoCount().ToString();                            
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+        }
+
+        void GetOutcome(object parameter)
+        {
+            DatabaseModel DataModel = new DatabaseModel();
+
+            try
+            {
+                TextOutcome = DataModel.TotalOutcome().ToString();
             }
             catch (Exception e)
             {
