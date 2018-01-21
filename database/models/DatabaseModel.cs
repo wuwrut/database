@@ -241,38 +241,34 @@ namespace database.models
 
         public long TotalAmmoCount()
         {
-            long ret;
+            object ret;
 
             using (SqlConnection con = new SqlConnection(con_str))
             {
-                using (SqlCommand cmd = new SqlCommand("TotalAmmoCount", con))
+                using (SqlCommand cmd = new SqlCommand("SELECT dbo.TotalAmmoCount(); ", con))
                 {
-                    cmd.CommandType = CommandType.StoredProcedure;
-
                     con.Open();
-                    ret = (long)cmd.ExecuteScalar();
+                    ret = cmd.ExecuteScalar();
                 }
             }
 
-            return ret;
+            return (long)ret;
         }
 
         public decimal TotalOutcome()
         {
-            decimal ret;
+            object ret;
 
             using (SqlConnection con = new SqlConnection(con_str))
             {
-                using (SqlCommand cmd = new SqlCommand("TotalOutcome", con))
+                using (SqlCommand cmd = new SqlCommand("SELECT dbo.TotalOutcome()", con))
                 {
-                    cmd.CommandType = CommandType.StoredProcedure;
-
                     con.Open();
-                    ret = (decimal)cmd.ExecuteScalar();
+                    ret = cmd.ExecuteScalar();
                 }
             }
 
-            return ret;
+            return (decimal)ret;
         }
 
         public IEnumerable<T> Query<T>(string sql_query, object parameters = null)
